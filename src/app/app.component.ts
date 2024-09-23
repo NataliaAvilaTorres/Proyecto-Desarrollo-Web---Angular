@@ -15,6 +15,6 @@ export class AppComponent {
   showHeaderAndFooter(): boolean {
     const currentUrl = this.router.url;
     // Oculta el header y footer en las rutas /mascotas y /mascota/detail/:id
-    return !currentUrl.includes('/mascotas') && !currentUrl.includes('/mascota/detail');
+    return !currentUrl.includes('/mascotas') && !currentUrl.includes('/mascota/detail') && !currentUrl.includes('/mascotaForm/update') && !currentUrl.includes('/mascotaForm/add');
   }
 }

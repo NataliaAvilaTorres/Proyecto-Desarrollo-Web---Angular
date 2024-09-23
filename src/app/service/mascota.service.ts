@@ -86,4 +86,18 @@ export class MascotaService {
     const mascota:Mascota = this.mascotaList.find(o => o.id === id)!;
     return mascota;
   }
+
+  updateMascota(mascota: Mascota): void {
+    const index = this.mascotaList.findIndex(m => m.id === mascota.id);
+    if (index !== -1) {
+      this.mascotaList[index] = { ...mascota };
+    }
+  }
+
+  addMascota(mascota: Mascota): void {
+    const newId = Math.max(...this.mascotaList.map(m => m.id)) + 1;
+    mascota.id = newId;
+    this.mascotaList.push({ ...mascota });
+  }
+
 }

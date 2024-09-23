@@ -9,6 +9,7 @@ import { FooterComponent } from './LandingPage/footer/footer.component';
 import { MascotaListComponent } from './mascota/mascota-list/mascota-list.component';
 import { MascotaDetailComponent } from './mascota/mascota-detail/mascota-detail.component';
 import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

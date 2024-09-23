@@ -1,9 +1,9 @@
-<img src="/images/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
-<img src="/images/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
+<img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
+<img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
 <div class="sidebar close">
     <div class="logo">
-        <img src="/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
-        <img src="/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
     </div>
 
     <ul class="nav-list">
@@ -60,7 +60,7 @@
         <li>
             <div class="profile-details">
                 <div class="profile-content">
-                    <img src="/images/user.jpg" alt="Imagen del Usuario" />
+                    <img src="assets/images/General/user.jpg" alt="Imagen del Usuario" />
                 </div>
 
                 <div class="name-job">
@@ -97,69 +97,58 @@
         <p>Aquí va el contenido de mis mascotas...</p>
     </section>
 
-    <img src="/images/modificarIcono.png" alt="icono" class="iconoModificar" />
+    <img src="assets/images/General/modificarIcono.png" alt="icono" class="iconoModificar" />
 
     <header id="header">
-        <h1 class="form-title" th:text="${isEdit} ? 'EDITAR MASCOTA' : 'NUEVA MASCOTA'"></h1>
-        <img src="/images/edit.png" alt="icono" class="iconoEdit" />
+        <h1 class="form-title">INFO MASCOTA</h1>
+        <img src="assets/images/General/edit.png" alt="icono" class="iconoEdit" />
     </header>
-    <main>
-        <div class="container">
-            <div class="form_area">
-                <p class="title">DATOS DE LA MASCOTA</p>
-                <form th:object="${mascota}" th:action="@{/pet/agregarMascota}" method="POST">
-                    <div class="form_group">
-                        <label class="sub_title" for="name">Nombre </label>
-                        <input placeholder="Ingresa el nombre de tu mascota" class="form_style" type="text" id="name"
-                            th:field="*{nombre}">
-                    </div>
-                    <div class="form_group">
-                        <label class="sub_title" for="breed">Raza</label>
-                        <input placeholder="Ingresa la raza de tu mascota" class="form_style" type="text" id="breed"
-                            th:field="*{raza}">
-                    </div>
-                    <div class="form_group">
-                        <label class="sub_title" for="age">Edad</label>
-                        <input placeholder="Ingresa la edad de tu mascota" class="form_style" type="number" id="age"
-                            th:field="*{edad}">
-                    </div>
-                    <div class="form_group">
-                        <label class="sub_title" for="weight">Peso</label>
-                        <input placeholder="Ingresa el peso de tu mascota" class="form_style" type="number" id="weight"
-                            th:field="*{peso}">
-                    </div>
-                    <div class="form_group">
-                        <label class="sub_title" for="illness">Enfermedad</label>
-                        <input placeholder="Ingresa si tu mascota tiene alguna enfermedad" class="form_style"
-                            type="text" id="illness" th:field="*{enfermedad}">
-                    </div>
-                    <div class="form_group">
-                        <label class="sub_title" for="photoUrl">Foto (URL)</label>
-                        <input placeholder="Ingresa la URL de la foto de tu mascota" class="form_style" type="text"
-                            id="photoUrl" th:field="*{fotoUrl}">
-                    </div>
-                    <div class="form_group">
-                        <label class="sub_title" for="status">Estado</label>
-                        <select class="form_style" id="status" th:field="*{estado}" required>
-                            <option value="" disabled selected>Seleccione el estado de la mascota</option>
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                        </select>
-                    </div>
-
-                    <div class="form_group">
-                        <label class="sub_title" for="owner">Propietario</label>
-                        <select id="owner" name="propietario" th:field="*{propietario.cedula}" class="form_style"
-                            required>
-                            <option value="" disabled selected>Seleccione un propietario</option>
-                            <option th:each="propietario : ${propietarios}" th:value="${propietario.cedula}"
-                                th:text="${propietario.cedula}"></option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <button type="submit" class="btn">GUARDAR</button>
-                    </div>
-                </form>
-            </div>
+    <div class="container">
+        <div class="form_area">
+            <p class="title">DATOS DE LA MASCOTA</p>
+            <form #mascotaForm="ngForm" (ngSubmit)="updateMascota(mascotaForm)">
+                <div class="form_group">
+                    <label class="sub_title" for="name">Nombre </label>
+                    <input placeholder="Ingresa el nombre de tu mascota" class="form_style" type="text" id="name"
+                           [(ngModel)]="mascota.nombre" name="nombre" required>
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="breed">Raza</label>
+                    <input placeholder="Ingresa la raza de tu mascota" class="form_style" type="text" id="breed"
+                           [(ngModel)]="mascota.raza" name="raza" required>
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="age">Edad</label>
+                    <input placeholder="Ingresa la edad de tu mascota" class="form_style" type="number" id="age"
+                           [(ngModel)]="mascota.edad" name="edad" required>
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="weight">Peso</label>
+                    <input placeholder="Ingresa el peso de tu mascota" class="form_style" type="number" id="weight"
+                           [(ngModel)]="mascota.peso" name="peso" required>
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="illness">Enfermedad</label>
+                    <input placeholder="Ingresa si tu mascota tiene alguna enfermedad" class="form_style" type="text"
+                           [(ngModel)]="mascota.enfermedad" name="enfermedad">
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="photoUrl">Foto (URL)</label>
+                    <input placeholder="Ingresa la URL de la foto de tu mascota" class="form_style" type="text"
+                           [(ngModel)]="mascota.fotoUrl" name="fotoUrl">
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="status">Estado</label>
+                    <select class="form_style" id="status" [(ngModel)]="mascota.estado" name="estado" required>
+                        <option value="" disabled selected>Seleccione el estado de la mascota</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <button type="submit" class="btn">GUARDAR</button>
+                </div>
+            </form>
         </div>
+    </div>

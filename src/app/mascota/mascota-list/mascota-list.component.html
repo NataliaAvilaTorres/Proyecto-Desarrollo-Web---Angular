@@ -150,7 +150,7 @@
                         <!--BOTONES DE ACCIONES-->
                         <td>
                             <button class="btn-detalles" (click) = "mostrarMascota(mascota)">Ver Detalles</button>
-                            <a th:href="@{/pet/update/{id}(id=${mascota.id})}" class="btn-editar">Editar</a>
+                            <button class="btn-editar" (click) = "editarMascota(mascota)">Editar</button>
                             <button class="btn-eliminar" (click) = "eliminarMascota(mascota)">Eliminar</button>
                         </td>
 
