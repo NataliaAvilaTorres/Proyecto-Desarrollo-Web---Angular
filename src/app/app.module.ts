@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './LandingPage/header/header.component';
 import { MainComponent } from './LandingPage/main/main.component';
 import { FooterComponent } from './LandingPage/footer/footer.component';
+import { MascotaListComponent } from './mascota/mascota-list/mascota-list.component';
+import { MascotaDetailComponent } from './mascota/mascota-detail/mascota-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
-    FooterComponent
+    FooterComponent,
+    MascotaListComponent,
+    MascotaDetailComponent
   ],
   imports: [
     BrowserModule,

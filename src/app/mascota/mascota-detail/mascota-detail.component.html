@@ -1,0 +1,26 @@
+<h1 class="servicios">DETALLES DE LA MASCOTA</h1>
+<div class="container">
+    <div class="card">
+        <ng-container *ngIf="mascota">
+        <div class="card-body">
+            <div class="details">
+                <h5 class="card-title" {{mascota.nombre}}></h5>
+                <p class="card-text">ID: <span {{mascota.id}}></span></p>
+                <p class="card-text">Raza: <span {{mascota.raza}}></span></p>
+                <p class="card-text">Edad: <span {{mascota.edad}}></span></p>
+                <p class="card-text">Peso: <span {{mascota.peso}}></span> kg</p>
+                <p class="card-text">Enfermedad: <span {{mascota.enfermedad}}></span></p>
+                <p class="card-text">Estado: <span {{mascota.estado}}></span></p>
+
+                <!-- Aquí agregamos los detalles del propietario -->
+            </div>
+            <div class="image-container">
+                <img {{mascota.foto}} alt="Foto de Mascota" class="card-img-top">
+            </div>
+        </div>
+        </ng-container>
+        <a href="javascript:window.history.back();" class="btn-testimonios">Volver</a>
+    </div>
+</div>
+
+<img src="/images/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
