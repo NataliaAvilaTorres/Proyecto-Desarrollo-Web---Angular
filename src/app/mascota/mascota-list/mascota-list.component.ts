@@ -39,4 +39,6 @@ export class MascotaListComponent {
   editarMascota(mascota: Mascota) {
     this.router.navigate(['/mascotaForm/update', mascota.id]); // Navega a la ruta de formulario con el ID de la mascota.
   }
+
+  
 }
