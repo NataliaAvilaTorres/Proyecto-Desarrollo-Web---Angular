@@ -1,0 +1,165 @@
+<img src="/images/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
+<img src="/images/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
+<div class="sidebar close">
+    <div class="logo">
+        <img src="/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
+        <img src="/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
+    </div>
+
+    <ul class="nav-list">
+        <li>
+            <a href="/veterinario/panel">
+                <i class="fab fa-microsoft"></i>
+                <span class="link-name">Panel</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/pet/addMascota">
+                <i class="fa-solid fa-plus"></i>
+                <span class="link-name">Agregar Mascota</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/propietario/addPropietario">
+                <i class="fa-solid fa-user-plus"></i>
+                <span class="link-name">Agregar Propietario</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-suitcase-medical"></i>
+                <span class="link-name">Asignar Tratamiento</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fas fa-bookmark"></i>
+                <span class="link-name">Ver Historial</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/pet/listMascotas">
+                <i class="fa-solid fa-shield-dog"></i>
+                <span class="link-name">Listado de Mascotas</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/propietario/listPropietarios">
+                <i class="fa-solid fa-list-ul"></i>
+                <span class="link-name">Listado de Propietarios</span>
+            </a>
+        </li>
+
+
+        <li>
+            <div class="profile-details">
+                <div class="profile-content">
+                    <img src="/images/user.jpg" alt="Imagen del Usuario" />
+                </div>
+
+                <div class="name-job">
+                    <div class="name" th:text="${primerNombre}">Nombre del Usuario</div>
+                    <div class="job">Veterinario</div>
+                </div>
+                <a href="/veterinario/logout"><i class="fas fa-right-to-bracket"></i></a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="home-section">
+    <div class="home-content">
+        <i class="fas fa-bars"></i>
+        <span class="text">Menu</span>
+    </div>
+
+    <!-- Sección de Panel -->
+    <section id="panel" class="content-section">
+        <h2>Panel</h2>
+        <p>Aquí va el contenido del panel principal...</p>
+    </section>
+
+    <!-- Sección de Historial -->
+    <section id="historial" class="content-section" style="display: none;">
+        <h2>Historial</h2>
+        <p>Aquí va el contenido del historial...</p>
+    </section>
+
+    <!-- Sección de Mis Mascotas -->
+    <section id="mis-mascotas" class="content-section" style="display: none;">
+        <h2>Mis Mascotas</h2>
+        <p>Aquí va el contenido de mis mascotas...</p>
+    </section>
+
+    <img src="/images/modificarIcono.png" alt="icono" class="iconoModificar" />
+
+    <header id="header">
+        <h1 class="form-title" th:text="${isEdit} ? 'EDITAR MASCOTA' : 'NUEVA MASCOTA'"></h1>
+        <img src="/images/edit.png" alt="icono" class="iconoEdit" />
+    </header>
+    <main>
+        <div class="container">
+            <div class="form_area">
+                <p class="title">DATOS DE LA MASCOTA</p>
+                <form th:object="${mascota}" th:action="@{/pet/agregarMascota}" method="POST">
+                    <div class="form_group">
+                        <label class="sub_title" for="name">Nombre </label>
+                        <input placeholder="Ingresa el nombre de tu mascota" class="form_style" type="text" id="name"
+                            th:field="*{nombre}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="breed">Raza</label>
+                        <input placeholder="Ingresa la raza de tu mascota" class="form_style" type="text" id="breed"
+                            th:field="*{raza}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="age">Edad</label>
+                        <input placeholder="Ingresa la edad de tu mascota" class="form_style" type="number" id="age"
+                            th:field="*{edad}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="weight">Peso</label>
+                        <input placeholder="Ingresa el peso de tu mascota" class="form_style" type="number" id="weight"
+                            th:field="*{peso}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="illness">Enfermedad</label>
+                        <input placeholder="Ingresa si tu mascota tiene alguna enfermedad" class="form_style"
+                            type="text" id="illness" th:field="*{enfermedad}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="photoUrl">Foto (URL)</label>
+                        <input placeholder="Ingresa la URL de la foto de tu mascota" class="form_style" type="text"
+                            id="photoUrl" th:field="*{fotoUrl}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="status">Estado</label>
+                        <select class="form_style" id="status" th:field="*{estado}" required>
+                            <option value="" disabled selected>Seleccione el estado de la mascota</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+
+                    <div class="form_group">
+                        <label class="sub_title" for="owner">Propietario</label>
+                        <select id="owner" name="propietario" th:field="*{propietario.cedula}" class="form_style"
+                            required>
+                            <option value="" disabled selected>Seleccione un propietario</option>
+                            <option th:each="propietario : ${propietarios}" th:value="${propietario.cedula}"
+                                th:text="${propietario.cedula}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn">GUARDAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>

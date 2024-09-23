@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { Mascota } from '../mascota';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mascota-list',
@@ -11,7 +12,8 @@ export class MascotaListComponent {
 
   //Inyectar dependencias
   constructor(
-    private mascotaService: MascotaService
+    private mascotaService: MascotaService,
+    private router: Router
   ) {
 
   }
@@ -31,7 +33,7 @@ export class MascotaListComponent {
   }
 
   mostrarMascota(mascota: Mascota) {
-    this.selectedMascota = mascota;
+    this.router.navigate(['/mascota/detail', mascota.id]); // Navega a la ruta de detalles con el ID de la mascota.
   }
 
 }

@@ -8,6 +8,7 @@ import { MainComponent } from './LandingPage/main/main.component';
 import { FooterComponent } from './LandingPage/footer/footer.component';
 import { MascotaListComponent } from './mascota/mascota-list/mascota-list.component';
 import { MascotaDetailComponent } from './mascota/mascota-detail/mascota-detail.component';
+import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MascotaDetailComponent } from './mascota/mascota-detail/mascota-detail.
     MainComponent,
     FooterComponent,
     MascotaListComponent,
-    MascotaDetailComponent
+    MascotaDetailComponent,
+    MascotaFormComponent
   ],
   imports: [
     BrowserModule,

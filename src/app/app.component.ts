@@ -13,6 +13,8 @@ export class AppComponent {
 
   // Función para determinar si se deben mostrar el header y footer
   showHeaderAndFooter(): boolean {
-    return this.router.url !== '/mascotas';
+    const currentUrl = this.router.url;
+    // Oculta el header y footer en las rutas /mascotas y /mascota/detail/:id
+    return !currentUrl.includes('/mascotas') && !currentUrl.includes('/mascota/detail');
   }
 }

@@ -81,4 +81,9 @@ export class MascotaService {
   findAll(){
     return this.mascotaList;
   }
+
+  findMascotaById(id: number):Mascota{
+    const mascota:Mascota = this.mascotaList.find(o => o.id === id)!;
+    return mascota;
+  }
 }
