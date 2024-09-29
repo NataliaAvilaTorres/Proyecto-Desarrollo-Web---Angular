@@ -15,6 +15,7 @@ import { VeterinarioPanelComponent } from './veterinario/veterinario-panel/veter
 import { PropietarioFormComponent } from './propietario/propietario-form/propietario-form.component';
 import { PropietarioDetailsComponent } from './propietario/propietario-details/propietario-details.component';
 import { PropietarioListComponent } from './propietario/propietario-list/propietario-list.component';
+import { PropietarioPanelComponent } from './propietario/propietario-panel/propietario-panel.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PropietarioListComponent } from './propietario/propietario-list/propiet
     VeterinarioPanelComponent,
     PropietarioFormComponent,
     PropietarioDetailsComponent,
-    PropietarioListComponent
+    PropietarioListComponent,
+    PropietarioPanelComponent
   ],
   imports: [
     BrowserModule,

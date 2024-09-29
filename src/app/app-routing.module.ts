@@ -8,10 +8,12 @@ import { VeterinarioPanelComponent } from './veterinario/veterinario-panel/veter
 import { PropietarioFormComponent } from './propietario/propietario-form/propietario-form.component';
 import { PropietarioDetailsComponent } from './propietario/propietario-details/propietario-details.component';
 import { PropietarioListComponent } from './propietario/propietario-list/propietario-list.component';
+import { PropietarioPanelComponent } from './propietario/propietario-panel/propietario-panel.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent}, //http://localhost:4200/login
   {path: 'veterinarioPanel', component: VeterinarioPanelComponent}, //http://localhost:4200/veterinarioPanel
+  {path: 'propietarioPanel', component: PropietarioPanelComponent}, //http://localhost:4200/propietarioPanel
   {path: 'propietarios', component: PropietarioListComponent}, //http://localhost:4200/propietarios
   {path: 'propietarioForm/add', component: PropietarioFormComponent}, //http://localhost:4200/propietarioForm/add
   {path: 'propietario/detail/:id', component: PropietarioDetailsComponent}, //http://localhost:4200/propietario/detail/1
