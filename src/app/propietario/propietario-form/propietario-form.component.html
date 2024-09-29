@@ -107,28 +107,28 @@
         <div class="container">
             <div class="form_area">
                 <p class="title">DATOS DEl PROPIETARIO</p>
-                <form th:object="${propietario}" th:action="@{/propietario/agregarPropietario}" method="POST">
+                <form #propietarioForm="ngForm" (ngSubmit)="updatePropietario(propietarioForm)">
                     <div class="form_group">
-                        <label class="sub_title" for="name">Cedula </label>
-                        <input class="form_style" type="text" id="cedula" th:field="*{cedula}" />
+                        <label class="sub_title" for="cedula">Cédula</label>
+                        <input class="form_style" type="text" id="cedula" name="cedula" [(ngModel)]="propietario.cedula" required />
                     </div>
                     <div class="form_group">
-                        <label class="sub_title" for="name">Nombre</label>
-                        <input class="form_style" type="text" id="nombre" th:field="*{nombre}" />
+                        <label class="sub_title" for="nombre">Nombre</label>
+                        <input class="form_style" type="text" id="nombre" name="nombre" [(ngModel)]="propietario.nombre" required />
                     </div>
                     <div class="form_group">
-                        <label class="sub_title" for="name">Correo</label>
-                        <input class="form_style" type="text" id="correo" th:field="*{correo}" />
+                        <label class="sub_title" for="correo">Correo</label>
+                        <input class="form_style" type="email" id="correo" name="correo" [(ngModel)]="propietario.correo" required />
                     </div>
                     <div class="form_group">
-                        <label class="sub_title" for="name">Celular</label>
-                        <input class="form_style" type="text" id="celular" th:field="*{celular}" />
+                        <label class="sub_title" for="celular">Celular</label>
+                        <input class="form_style" type="text" id="celular" name="celular" [(ngModel)]="propietario.celular" required />
                     </div>
                     <div class="form_group">
-                        <label class="sub_title" for="name">Contraseña</label>
-                        <input class="form_style" type="text" id="contrasena" th:field="*{contrasena}" />
+                        <label class="sub_title" for="contrasena">Contraseña</label>
+                        <input class="form_style" type="password" id="contrasena" name="contrasena" [(ngModel)]="propietario.contrasena" required />
                     </div>
-
+                
                     <div>
                         <button type="submit" class="btn">Guardar</button>
                     </div>

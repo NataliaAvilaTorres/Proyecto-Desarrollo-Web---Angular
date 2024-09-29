@@ -1,10 +1,10 @@
-<img src="/images/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
-<img src="/images/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
+<img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
+<img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
 
 <div class="sidebar close">
     <div class="logo">
-        <img src="/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
-        <img src="/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
     </div>
 
     <ul class="nav-list">
@@ -61,7 +61,7 @@
         <li>
             <div class="profile-details">
                 <div class="profile-content">
-                    <img src="/images/user.jpg" alt="Imagen del Usuario" />
+                    <img src="assets/images/General/user.jpg" alt="Imagen del Usuario" />
                 </div>
 
                 <div class="name-job">
@@ -98,7 +98,7 @@
         <p>Aquí va el contenido de mis mascotas...</p>
     </section>
 
-    <img src="/images/lista.png" alt="icono" class="iconoLista" />
+    <img src="assets/images/General/lista.png" alt="icono" class="iconoLista" />
 
     <header id="header">
         <h1 class="form-title">DETALLES DEL PROPIETARIO</h1>
@@ -109,10 +109,10 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Información del Propietario</h5>
-                    <p>Cédula: <span th:text="${propietario.cedula}"></span></p>
-                    <p>Nombre: <span th:text="${propietario.nombre}"></span></p>
-                    <p>Correo: <span th:text="${propietario.correo}"></span></p>
-                    <p>Celular: <span th:text="${propietario.celular}"></span></p>
+                    <p>Cédula: <span>{{propietario.cedula}}</span></p>
+                    <p>Nombre: <span>{{propietario.nombre}}</span></p>
+                    <p>Correo: <span>{{propietario.correo}}</span></p>
+                    <p>Celular: <span>{{propietario.celular}}</span></p>
                 </div>
             </div>
 

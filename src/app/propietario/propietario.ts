@@ -1,4 +1,4 @@
-export interface propietario {
+export interface Propietario {
     id: number;
     nombre: string;
     cedula: string;

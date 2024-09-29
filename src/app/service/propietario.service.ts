@@ -34,5 +34,27 @@ export class PropietarioService {
       contrasena: "andres4321"
     }
   ];
-  
+
+  findAll(){
+    return this.propietarioList;
+  }
+
+  findPropietarioById(id: number):Propietario{
+    const propietario:Propietario = this.propietarioList.find(o => o.id === id)!;
+    return propietario;
+  }
+
+  updatePropietario(propietario: Propietario): void {
+    const index = this.propietarioList.findIndex(m => m.id === propietario.id);
+    if (index !== -1) {
+      this.propietarioList[index] = { ...propietario };
+    }
+  }
+
+  addPropietario(propietario: Propietario): void {
+    const newId = Math.max(...this.propietarioList.map(m => m.id)) + 1;
+    propietario.id = newId;
+    this.propietarioList.push({ ...propietario });
+  }
+
 }
