@@ -13,7 +13,7 @@ export class PropietarioService {
       id: 1,
       nombre: "Cristian",
       cedula: "1234567890",
-      correo: "jXUeh@example.com",
+      correo: "cristian@example.com",
       celular: "3001234567",
       contrasena: "pass1234"
     },
