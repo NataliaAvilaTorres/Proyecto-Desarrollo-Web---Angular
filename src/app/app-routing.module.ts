@@ -3,12 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { MascotaListComponent } from './mascota/mascota-list/mascota-list.component';
 import { MascotaDetailComponent } from './mascota/mascota-detail/mascota-detail.component';
 import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
+import { LoginPageComponent } from './login/login-page/login-page.component';
+import { VeterinarioPanelComponent } from './veterinario/veterinario-panel/veterinario-panel.component';
+import { PropietarioFormComponent } from './propietario/propietario-form/propietario-form.component';
+import { PropietarioDetailsComponent } from './propietario/propietario-details/propietario-details.component';
+import { PropietarioListComponent } from './propietario/propietario-list/propietario-list.component';
 
 const routes: Routes = [
-  {path: 'mascotas', component: MascotaListComponent},
-  {path: 'mascota/detail/:id', component: MascotaDetailComponent},
-  {path: 'mascotaForm/add', component: MascotaFormComponent},
-  {path: 'mascotaForm/update/:id', component: MascotaFormComponent},
+  {path: 'login', component: LoginPageComponent}, //http://localhost:4200/login
+  {path: 'veterinarioPanel', component: VeterinarioPanelComponent}, //http://localhost:4200/veterinarioPanel
+  {path: 'propietarios', component: PropietarioListComponent}, //http://localhost:4200/propietarios
+  {path: 'propietarioForm/add', component: PropietarioFormComponent}, //http://localhost:4200/propietarioForm/add
+  {path: 'propietario/detail/:id', component: PropietarioDetailsComponent}, //http://localhost:4200/propietario/detail/1
+  {path: 'propietarioForm/update/:id', component: PropietarioFormComponent}, //http://localhost:4200/propietarioForm/update/1
+  {path: 'mascotas', component: MascotaListComponent}, //http://localhost:4200/mascotas
+  {path: 'mascota/detail/:id', component: MascotaDetailComponent}, //http://localhost:4200/mascota/detail/1
+  {path: 'mascotaForm/add', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/add
+  {path: 'mascotaForm/update/:id', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/update/1
 ];
 
 @NgModule({

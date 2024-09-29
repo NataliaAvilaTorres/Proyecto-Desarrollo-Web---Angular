@@ -1,6 +1,5 @@
 <img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
 <img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
-
 <div class="sidebar close">
     <div class="logo">
         <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
@@ -16,7 +15,7 @@
         </li>
 
         <li>
-            <a href="/mascotaForm/add">
+            <a href="/pet/addMascota">
                 <i class="fa-solid fa-plus"></i>
                 <span class="link-name">Agregar Mascota</span>
             </a>
@@ -44,7 +43,7 @@
         </li>
 
         <li>
-            <a href="/mascotas">
+            <a href="/pet/listMascotas">
                 <i class="fa-solid fa-shield-dog"></i>
                 <span class="link-name">Listado de Mascotas</span>
             </a>
@@ -68,7 +67,7 @@
                     <div class="name" th:text="${primerNombre}">Nombre del Usuario</div>
                     <div class="job">Veterinario</div>
                 </div>
-                <a href="/logout"><i class="fas fa-right-to-bracket"></i></a>
+                <a href="/veterinario/logout"><i class="fas fa-right-to-bracket"></i></a>
             </div>
         </li>
     </ul>
@@ -98,64 +97,43 @@
         <p>Aquí va el contenido de mis mascotas...</p>
     </section>
 
-    <img src="assets/images/General/lista.png" alt="icono" class="iconoLista" />
+    <img src="assets/images/General/modificarIcono.png" alt="icono" class="iconoModificar" />
 
     <header id="header">
-        <h1 class="form-title">LISTA DE MASCOTAS</h1>
+        <h1 class="form-title">NUEVO PROPIETARIO</h1>
+        <img src="assets/images/General/edit.png" alt="icono" class="iconoEdit" />
     </header>
+    <main>
+        <div class="container">
+            <div class="form_area">
+                <p class="title">DATOS DEl PROPIETARIO</p>
+                <form th:object="${propietario}" th:action="@{/propietario/agregarPropietario}" method="POST">
+                    <div class="form_group">
+                        <label class="sub_title" for="name">Cedula </label>
+                        <input class="form_style" type="text" id="cedula" th:field="*{cedula}" />
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="name">Nombre</label>
+                        <input class="form_style" type="text" id="nombre" th:field="*{nombre}" />
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="name">Correo</label>
+                        <input class="form_style" type="text" id="correo" th:field="*{correo}" />
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="name">Celular</label>
+                        <input class="form_style" type="text" id="celular" th:field="*{celular}" />
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="name">Contraseña</label>
+                        <input class="form_style" type="text" id="contrasena" th:field="*{contrasena}" />
+                    </div>
 
-    <!-- Campo de búsqueda -->
-    <section class="buscar">
-        <div class="buscador-container">
-            <h1>BUSCADOR</h1>
-            <div class="buscador-input">
-                <input type="text" id="searchInput" placeholder="Buscar mascota..." onkeyup="buscarMascotas()" />
-                <span class="icon-search">&#128269;</span>
+                    <div>
+                        <button type="submit" class="btn">Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-
-
-    <main class="table" id="customers_table">
-        <section class="table__header">
-            <h1>MASCOTAS</h1>
-
-        </section>
-        <section class="table__body">
-            <table id="mascotasTable">
-                <thead>
-                    <tr>
-                        <th> ID</th>
-                        <th> Nombre</th>
-                        <th> Raza</th>
-                        <th> Edad</th>
-                        <th> Enfermerdad</th>
-                        <th> Foto</th>
-                        <th> Estado</th>
-                        <th> Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let mascota of mascotaList">
-                        <td>{{mascota.id}}</td>
-                        <td>{{mascota.nombre}}</td>
-                        <td>{{mascota.raza}}</td>
-                        <td>{{mascota.edad}}</td>
-                        <td>{{mascota.enfermedad}}</td>
-                        <td><img src="{{mascota.fotoUrl}}" alt="Imagen de la mascota" width="100" height="100"></td>
-                        <td>{{mascota.estado}}</td>
-                    
-
-
-                        <!--BOTONES DE ACCIONES-->
-                        <td>
-                            <button class="btn-detalles" (click) = "mostrarMascota(mascota)">Ver Detalles</button>
-                            <button class="btn-editar" (click) = "editarMascota(mascota)">Editar</button>
-                            <button class="btn-eliminar" (click) = "eliminarMascota(mascota)">Eliminar</button>
-                        </td>
-
-
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+    </main>
+</div>

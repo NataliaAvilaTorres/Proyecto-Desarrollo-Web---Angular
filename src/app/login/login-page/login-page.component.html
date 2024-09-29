@@ -1,0 +1,32 @@
+<img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
+<img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
+
+<div class="container">
+    <div class="login-box">
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-05.png" alt="Dogin Logo" class="logo" />
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" action="/login" method="post">
+
+            <div class="role-selection">
+                <label><input type="radio" name="role" value="veterinario" required> Veterinario</label><br />
+                <label><input type="radio" name="role" value="administrador" required> Administrador</label><br />
+                <label><input type="radio" name="role" value="dueno" required> Dueño de Mascota</label>
+            </div>
+
+            <div class="input-group">
+                <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
+                <input type="email" id="email" name="correo" required />
+            </div>
+            <div class="input-group">
+                <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+                <input type="password" id="password" name="contrasena" required />
+            </div>
+
+            <button type="submit" class="login-btn">Iniciar Sesión</button>
+        </form>
+        <div class="links">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <a href="#">Crear una cuenta</a>
+        </div>
+    </div>
+</div>

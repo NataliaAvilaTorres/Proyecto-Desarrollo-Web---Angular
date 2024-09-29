@@ -10,6 +10,11 @@ import { MascotaListComponent } from './mascota/mascota-list/mascota-list.compon
 import { MascotaDetailComponent } from './mascota/mascota-detail/mascota-detail.component';
 import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
 import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './login/login-page/login-page.component';
+import { VeterinarioPanelComponent } from './veterinario/veterinario-panel/veterinario-panel.component';
+import { PropietarioFormComponent } from './propietario/propietario-form/propietario-form.component';
+import { PropietarioDetailsComponent } from './propietario/propietario-details/propietario-details.component';
+import { PropietarioListComponent } from './propietario/propietario-list/propietario-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     MascotaListComponent,
     MascotaDetailComponent,
-    MascotaFormComponent
+    MascotaFormComponent,
+    LoginPageComponent,
+    VeterinarioPanelComponent,
+    PropietarioFormComponent,
+    PropietarioDetailsComponent,
+    PropietarioListComponent
   ],
   imports: [
     BrowserModule,
