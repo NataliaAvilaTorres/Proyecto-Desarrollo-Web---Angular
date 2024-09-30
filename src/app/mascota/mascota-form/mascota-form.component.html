@@ -149,9 +149,10 @@
                 <div class="form_group">
                     <label class="sub_title" for="owner">Propietario</label>
                     <select id="owner" name="propietario" [(ngModel)]="selectedPropietario" class="form_style" required>
-                        <option value="" disabled selected>Seleccione un propietario</option>
-                        <option *ngFor="let propietario of propietarioList" [value]="propietario.cedula">{{ propietario.cedula }}</option>
-                    </select>
+                        <option *ngFor="let propietario of propietarioList" [ngValue]="propietario">
+                          {{ propietario.nombre }}
+                        </option>
+                      </select>                      
                 </div>
 
             

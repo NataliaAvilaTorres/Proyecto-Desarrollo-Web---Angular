@@ -25,7 +25,7 @@ export class MascotaFormComponent {
   };
 
   propietarioList: Propietario[] = [];
-  selectedPropietario: string = '';  // Añadimos la variable
+  selectedPropietario: Propietario | null = null; // Propiedad añadida
   isEditing: boolean = false;
 
   constructor(
@@ -40,23 +40,53 @@ export class MascotaFormComponent {
     if (id) {
       this.isEditing = true;
       const mascotaId = +id;
-      this.mascota = this.mascotaService.findMascotaById(mascotaId);
+      this.mascotaService.findMascotaById(mascotaId).subscribe(
+        data => {
+          this.mascota = data;
+          this.selectedPropietario = data.propietario ?? null; // Asignar el propietario de la mascota actual o null si es undefined
+        },
+        error => {
+          console.error('Error fetching mascota', error);
+        }
+      );
     }
-  
-    // Cargar lista de propietarios directamente si findAll() devuelve un arreglo
-    this.propietarioList = this.propietarioService.findAll();
+
+    this.propietarioService.findAll().subscribe(
+      data => {
+        this.propietarioList = data;
+      },
+      error => {
+        console.error('Error fetching propietarios', error);
+      }
+    );
   }
 
   updateMascota(form: NgForm): void {
     if (form.valid) {
-      if (this.isEditing) {
-        // Actualizar la mascota existente
-        this.mascotaService.updateMascota(this.mascota);
-      } else {
-        // Crear una nueva mascota
-        this.mascotaService.addMascota(this.mascota);
+      // Asignar el propietario seleccionado a la mascota
+      if (this.selectedPropietario) {
+        this.mascota.propietario = this.selectedPropietario;
       }
-      this.router.navigate(['/mascotas']);
+
+      if (this.isEditing) {
+        this.mascotaService.updateMascota(this.mascota).subscribe(
+          data => {
+            this.router.navigate(['/mascotas']);
+          },
+          error => {
+            console.error('Error updating mascota', error);
+          }
+        );
+      } else {
+        this.mascotaService.addMascota(this.mascota).subscribe(
+          data => {
+            this.router.navigate(['/mascotas']);
+          },
+          error => {
+            console.error('Error adding mascota', error);
+          }
+        );
+      }
     }
   }
 }

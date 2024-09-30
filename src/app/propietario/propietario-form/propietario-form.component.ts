@@ -32,22 +32,26 @@ export class PropietarioFormComponent {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditing = true;
-      const propietarioId = +id;
-      this.propietario = this.propietarioService.findPropietarioById(propietarioId);
+      this.propietarioService.findPropietarioById(+id).subscribe(
+        data => this.propietario = data,
+        error => console.error('Error fetching propietario', error)
+      );
     }
   }
 
   updatePropietario(form: NgForm): void {
     if (form.valid) {
       if (this.isEditing) {
-        // Actualizar la mascota existente
-        this.propietarioService.updatePropietario(this.propietario);
+        this.propietarioService.updatePropietario(this.propietario).subscribe(
+          data => this.router.navigate(['/propietarios']),
+          error => console.error('Error updating propietario', error)
+        );
       } else {
-        // Crear una nueva mascota
-        this.propietarioService.addPropietario(this.propietario);
+        this.propietarioService.addPropietario(this.propietario).subscribe(
+          data => this.router.navigate(['/propietarios']),
+          error => console.error('Error adding propietario', error)
+        );
       }
-      this.router.navigate(['/propietarios']);
     }
   }
-
 }

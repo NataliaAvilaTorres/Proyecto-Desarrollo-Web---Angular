@@ -22,26 +22,27 @@ export class LoginPageComponent {
 
   onSubmit() {
     if (this.role === 'dueno') {
-      const propietario = this.propietarioService.findPropietarioByEmail(this.correo);
-      if (propietario && propietario.contrasena === this.contrasena) {
-        // Guardar el correo en el localStorage
-        localStorage.setItem('currentUserEmail', this.correo);
-        this.router.navigate(['/propietarioPanel']);
-      } else {
-        alert('Credenciales inválidas para dueño de mascota');
-      }
+      this.propietarioService.findAll().subscribe(propietarios => {
+        const propietario = propietarios.find(p => p.correo === this.correo && p.contrasena === this.contrasena);
+        if (propietario) {
+          // Guardar el correo en el localStorage
+          localStorage.setItem('currentUserEmail', this.correo);
+          this.router.navigate(['/propietarioPanel']);
+        } else {
+          alert('Credenciales inválidas para dueño de mascota');
+        }
+      });
     } else if (this.role === 'veterinario') {
-      const veterinario = this.veterinarioService.veterinarioList.find(
-        v => v.correo === this.correo && v.contrasena === this.contrasena
-      );
-      if (veterinario) {
-        this.router.navigate(['/veterinarioPanel']);
-      } else {
-        alert('Credenciales inválidas para veterinario');
-      }
+      this.veterinarioService.findAll().subscribe(veterinarios => {
+        const veterinario = veterinarios.find(v => v.correo === this.correo && v.contrasena === this.contrasena);
+        if (veterinario) {
+          this.router.navigate(['/veterinarioPanel']);
+        } else {
+          alert('Credenciales inválidas para veterinario');
+        }
+      });
     } else {
       alert('Por favor, seleccione un rol');
     }
   }
-
 }

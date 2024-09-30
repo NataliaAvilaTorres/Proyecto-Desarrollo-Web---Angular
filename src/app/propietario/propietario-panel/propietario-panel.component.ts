@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './propietario-panel.component.html',
   styleUrls: ['./propietario-panel.component.css']
 })
-export class PropietarioPanelComponent {
-
-}
+export class PropietarioPanelComponent {}

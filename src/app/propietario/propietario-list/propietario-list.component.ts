@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropietarioService } from 'src/app/service/propietario.service';
 import { Propietario } from '../propietario';
@@ -8,54 +8,50 @@ import { Propietario } from '../propietario';
   templateUrl: './propietario-list.component.html',
   styleUrls: ['./propietario-list.component.css']
 })
-export class PropietarioListComponent {
+export class PropietarioListComponent implements OnInit {
+  propietarioList: Propietario[] = [];
+  originalPropietarioList: Propietario[] = [];
 
-  //Inyectar dependencias
   constructor(
     private propietarioService: PropietarioService,
     private router: Router
-  ) {
+  ) {}
 
-  }
-
-  //Realizo llamados cuando ya esta cargada la interfaz
   ngOnInit(): void {
-    this.propietarioList = this.propietarioService.findAll();
-    this.originalMascotaList = [...this.propietarioList]; // Almacena la lista original
+    this.propietarioService.findAll().subscribe(
+      data => {
+        this.propietarioList = data;
+        this.originalPropietarioList = [...this.propietarioList];
+      },
+      error => console.error('Error fetching propietarios', error)
+    );
   }
-
-  //Atributos
-  propietarioList!: Propietario[];
-  originalMascotaList!: Propietario[];
-  selectedPropietario!: Propietario;
 
   eliminarPropietario(propietario: Propietario) {
-    var index = this.propietarioList.indexOf(propietario);
-    this.propietarioList.splice(index, 1);
+    this.propietarioService.deletePropietario(propietario.id).subscribe(() => {
+      this.propietarioList = this.propietarioList.filter(p => p.id !== propietario.id);
+    });
   }
 
   mostrarPropietario(propietario: Propietario) {
-    this.router.navigate(['/propietario/detail', propietario.id]); // Navega a la ruta de detalles con el ID de la mascota.
+    this.router.navigate(['/propietario/detail', propietario.id]);
   }
 
   editarPropietario(propietario: Propietario) {
-    this.router.navigate(['/propietarioForm/update', propietario.id]); // Navega a la ruta de formulario con el ID de la mascota.
+    this.router.navigate(['/propietarioForm/update', propietario.id]);
   }
 
   buscarPropietarios(event: any) {
     const searchTerm = event.target.value.toLowerCase().trim();
-    
+
     if (searchTerm === '') {
-      // Si el término de búsqueda está vacío, mostrar todas las mascotas
-      this.propietarioList = [...this.originalMascotaList];
+      this.propietarioList = [...this.originalPropietarioList];
     } else {
-      // Si hay un término de búsqueda, filtrar las mascotas
-      this.propietarioList = this.originalMascotaList.filter(propietario => 
-        Object.values(propietario).some((val: any) => 
+      this.propietarioList = this.originalPropietarioList.filter(propietario =>
+        Object.values(propietario).some((val: any) =>
           val && val.toString().toLowerCase().includes(searchTerm)
         )
       );
     }
   }
-
 }

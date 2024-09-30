@@ -1,40 +1,39 @@
+// src/app/service/veterinario.service.ts
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Veterinario } from '../veterinario/veterinario';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VeterinarioService {
+  private apiUrl = 'http://localhost:8090/api/veterinarios'; // Ajusta si es necesario
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  veterinarioList: Veterinario[] = [
-    {
-      id: 1,
-      cedula: '1234567890',
-      nombre: 'John Doe',
-      especialidad: 'Peluquero',
-      numAtenciones: 0,
-      contrasena: 'password123',
-      correo: 'john@example.com'
-    },
-    {
-      id: 2,
-      cedula: '9876543210',
-      nombre: 'Jane Smith',
-      especialidad: 'Veterinario',
-      numAtenciones: 0,
-      contrasena: 'password456',
-      correo: 'jane@example.com'
-    },
-    {
-      id: 3,
-      cedula: '5555555555',
-      nombre: 'Michael Johnson',
-      especialidad: 'Nutricionista',
-      numAtenciones: 0,
-      contrasena: 'password789',
-      correo: 'michael@example.com'
-    }
-  ];
+  findAll(): Observable<Veterinario[]> {
+    return this.http.get<Veterinario[]>(`${this.apiUrl}/`);
+  }
+
+  findVeterinarioById(id: number): Observable<Veterinario> {
+    return this.http.get<Veterinario>(`${this.apiUrl}/${id}`);
+  }
+
+  // Método para obtener todos los veterinarios
+  getAllVeterinarios(): Observable<Veterinario[]> {
+    return this.http.get<Veterinario[]>(`${this.apiUrl}`);
+  }
+
+  updateVeterinario(veterinario: Veterinario): Observable<Veterinario> {
+    return this.http.put<Veterinario>(`${this.apiUrl}/${veterinario.id}`, veterinario);
+  }
+
+  addVeterinario(veterinario: Veterinario): Observable<Veterinario> {
+    return this.http.post<Veterinario>(`${this.apiUrl}/`, veterinario);
+  }
+
+  deleteVeterinario(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

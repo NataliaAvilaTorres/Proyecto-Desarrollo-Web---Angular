@@ -1,103 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Mascota } from '../mascota/mascota';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MascotaService {
 
-  constructor() { }
+  private apiUrl = 'http://localhost:8090/api/mascotas'; // Adjust the port if necessary
 
-  //BD quemada de mascotas
-  mascotaList: Mascota[] = [
-    {
-      id: 1,
-      nombre: 'Lorenzo',
-      raza: 'Sabueso',
-      edad: 2,
-      peso: 5.5,
-      enfermedad: 'Gripe',
-      fotoUrl: 'assets/images/General/mascotas.jpg',
-      estado: 'Activo'
-    },
+  constructor(private http: HttpClient) { }
 
-    {
-      id: 2,
-      nombre: 'Toby',
-      raza: 'Persa',
-      edad: 3,
-      peso: 6.78,
-      enfermedad: 'Gripe',
-      fotoUrl: 'assets/images/General/mascotas.jpg',
-      estado: 'Activo'
-    },
-
-    {
-      id: 3,
-      nombre: 'Kovo',
-      raza: 'Bulldog Frances',
-      edad: 4,
-      peso: 11,
-      enfermedad: 'Gripe',
-      fotoUrl: 'assets/images/General/mascotas.jpg',
-      estado: 'Inactivo'
-    },
-
-    {
-      id: 4,
-      nombre: 'Bella',
-      raza: 'Persa',
-      edad: 3,
-      peso: 4.2,
-      enfermedad: 'Dermatitis',
-      fotoUrl: 'assets/images/General/mascotas.jpg',
-      estado: 'Activo'
-    },
-
-    {
-      id: 5,
-      nombre: 'Simba',
-      raza: 'Golden Retriever',
-      edad: 5,
-      peso: 29.5,
-      enfermedad: 'Otitis',
-      fotoUrl: 'assets/images/General/mascotas.jpg',
-      estado: 'Activo'
-    },
-
-    {
-      id: 6,
-      nombre: 'Milo',
-      raza: 'Siamés',
-      edad: 2,
-      peso: 4.8,
-      enfermedad: 'Conjuntivitis',
-      fotoUrl: 'assets/images/General/mascotas.jpg',
-      estado: 'Inactivo'
-    }
-
-  ];
-
-  findAll(){
-    return this.mascotaList;
+  findAll(): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>(`${this.apiUrl}/`);
   }
 
-  findMascotaById(id: number):Mascota{
-    const mascota:Mascota = this.mascotaList.find(o => o.id === id)!;
-    return mascota;
+  findMascotaById(id: number): Observable<Mascota> {
+    return this.http.get<Mascota>(`${this.apiUrl}/${id}`);
   }
 
-  updateMascota(mascota: Mascota): void {
-    const index = this.mascotaList.findIndex(m => m.id === mascota.id);
-    if (index !== -1) {
-      this.mascotaList[index] = { ...mascota };
-    }
+  updateMascota(mascota: Mascota): Observable<Mascota> {
+    return this.http.put<Mascota>(`${this.apiUrl}/${mascota.id}`, mascota);
   }
 
-  addMascota(mascota: Mascota): void {
-    const newId = Math.max(...this.mascotaList.map(m => m.id)) + 1;
-    mascota.id = newId;
-    this.mascotaList.push({ ...mascota });
+  addMascota(mascota: Mascota): Observable<Mascota> {
+    return this.http.post<Mascota>(`${this.apiUrl}/`, mascota);
   }
 
+  deleteMascota(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

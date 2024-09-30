@@ -15,14 +15,16 @@ export class PropietarioDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private propietarioService: PropietarioService // Inyecta el servicio para obtener la mascota
+    private propietarioService: PropietarioService
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id'); // Obtiene el ID de la URL
+    const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.propietario = this.propietarioService.findPropietarioById(+id); // Llama al servicio para obtener la mascota por ID
+      this.propietarioService.findPropietarioById(+id).subscribe(
+        data => this.propietario = data,
+        error => console.error('Error fetching propietario', error)
+      );
     }
   }
-
 }

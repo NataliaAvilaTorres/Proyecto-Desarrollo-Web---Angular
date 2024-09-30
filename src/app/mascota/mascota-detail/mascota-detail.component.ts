@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Mascota } from '../mascota';
 import { ActivatedRoute } from '@angular/router';
 import { MascotaService } from 'src/app/service/mascota.service';
@@ -10,19 +10,24 @@ import { MascotaService } from 'src/app/service/mascota.service';
 })
 export class MascotaDetailComponent {
 
-  @Input()
   mascota!: Mascota;
 
   constructor(
     private route: ActivatedRoute,
-    private mascotaService: MascotaService // Inyecta el servicio para obtener la mascota
+    private mascotaService: MascotaService
   ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id'); // Obtiene el ID de la URL
     if (id) {
-      this.mascota = this.mascotaService.findMascotaById(+id); // Llama al servicio para obtener la mascota por ID
+      this.mascotaService.findMascotaById(+id).subscribe(
+        data => {
+          this.mascota = data;
+        },
+        error => {
+          console.error('Error fetching mascota', error);
+        }
+      );
     }
   }
-
 }

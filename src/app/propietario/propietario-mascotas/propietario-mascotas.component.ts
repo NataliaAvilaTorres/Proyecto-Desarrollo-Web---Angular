@@ -17,12 +17,14 @@ export class PropietarioMascotasComponent implements OnInit {
   ngOnInit() {
     const userEmail = localStorage.getItem('currentUserEmail');
     if (userEmail) {
-      const propietario = this.propietarioService.findPropietarioByEmail(userEmail);
-      if (propietario) {
-        this.propietarioNombre = propietario.nombre;
-        this.mascotas = propietario.mascotas;
-        this.filteredMascotas = [...this.mascotas];
-      }
+      this.propietarioService.findAll().subscribe(propietarios => {
+        const propietario = propietarios.find(p => p.correo === userEmail);
+        if (propietario) {
+          this.propietarioNombre = propietario.nombre;
+          this.mascotas = propietario.mascotas;
+          this.filteredMascotas = [...this.mascotas];
+        }
+      }, error => console.error('Error fetching propietarios', error));
     }
   }
 
@@ -36,18 +38,15 @@ export class PropietarioMascotasComponent implements OnInit {
 
   filtrar(event: any) {
     const searchTerm = event.target.value.toLowerCase().trim();
-    
+
     if (searchTerm === '') {
-      // Si el término de búsqueda está vacío, mostrar todas las mascotas
       this.filteredMascotas = [...this.mascotas];
     } else {
-      // Si hay un término de búsqueda, filtrar las mascotas
-      this.filteredMascotas = this.mascotas.filter(mascota => 
-        Object.values(mascota).some((val: any) => 
+      this.filteredMascotas = this.mascotas.filter(mascota =>
+        Object.values(mascota).some((val: any) =>
           val && val.toString().toLowerCase().includes(searchTerm)
         )
       );
     }
   }
-
 }

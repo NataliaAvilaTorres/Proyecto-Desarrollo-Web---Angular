@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './LandingPage/header/header.component';
 import { MainComponent } from './LandingPage/main/main.component';
@@ -17,6 +18,9 @@ import { PropietarioDetailsComponent } from './propietario/propietario-details/p
 import { PropietarioListComponent } from './propietario/propietario-list/propietario-list.component';
 import { PropietarioPanelComponent } from './propietario/propietario-panel/propietario-panel.component';
 import { PropietarioMascotasComponent } from './propietario/propietario-mascotas/propietario-mascotas.component';
+
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; // Add this
 
 @NgModule({
   declarations: [
@@ -38,7 +42,10 @@ import { PropietarioMascotasComponent } from './propietario/propietario-mascotas
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

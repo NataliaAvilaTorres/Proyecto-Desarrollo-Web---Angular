@@ -1,100 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Propietario } from '../propietario/propietario';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PropietarioService {
 
-  constructor() { }
+  private apiUrl = 'http://localhost:8090/api/propietarios'; // Ajusta el puerto si es necesario
 
-  propietarioList: Propietario[] = [
-    {
-      id: 1,
-      nombre: "Cristian",
-      cedula: "1234567890",
-      correo: "cristian@example.com",
-      celular: "3001234567",
-      contrasena: "pass1234",
-      mascotas: [
-        {
-          id: 1,
-          nombre: "Firulais",
-          raza: "Golden Retriever",
-          edad: 5,
-          peso: 30,
-          enfermedad: "Ninguna",
-          fotoUrl: "https://pampermut.com/blog/wp-content/uploads/2020/05/Como-es-el-caracter-de-tu-perro-segun-su-horoscopo-scaled.jpg",
-          estado: "Sano",
-        },
-        {
-          id: 2,
-          nombre: "Luna",
-          raza: "Labrador",
-          edad: 3,
-          peso: 25,
-          enfermedad: "Alergia",
-          fotoUrl: "https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg",
-          estado: "En tratamiento"
-        }
-      ]
-    },
-    {
-      id: 2,
-      nombre: "Camila",
-      cedula: "9876543210",
-      correo: "camila@example.com",
-      celular: "3019876543",
-      contrasena: "camila5678",
-      mascotas: [
-        {
-          id: 3,
-          nombre: "Max",
-          raza: "Bulldog",
-          edad: 4,
-          peso: 20,
-          enfermedad: "Displasia de cadera",
-          fotoUrl: "assets/images/max.png",
-          estado: "En tratamiento"
-        }
-      ]
-    },
-    {
-      id: 3,
-      nombre: "Andrés",
-      cedula: "1122334455",
-      correo: "andres@example.com",
-      celular: "3021122334",
-      contrasena: "andres4321",
-      mascotas: []
-    }
-  ];
+  constructor(private http: HttpClient) { }
 
-  findAll(){
-    return this.propietarioList;
+  findAll(): Observable<Propietario[]> {
+    return this.http.get<Propietario[]>(`${this.apiUrl}/`);
   }
 
-  findPropietarioById(id: number):Propietario{
-    const propietario:Propietario = this.propietarioList.find(o => o.id === id)!;
-    return propietario;
+  findPropietarioById(id: number): Observable<Propietario> {
+    return this.http.get<Propietario>(`${this.apiUrl}/${id}`);
   }
 
-  findPropietarioByEmail(email: string): Propietario | undefined {
-    return this.propietarioList.find(p => p.correo === email);
+  updatePropietario(propietario: Propietario): Observable<Propietario> {
+    return this.http.put<Propietario>(`${this.apiUrl}/${propietario.id}`, propietario);
   }
 
-
-  updatePropietario(propietario: Propietario): void {
-    const index = this.propietarioList.findIndex(m => m.id === propietario.id);
-    if (index !== -1) {
-      this.propietarioList[index] = { ...propietario };
-    }
+  addPropietario(propietario: Propietario): Observable<Propietario> {
+    return this.http.post<Propietario>(`${this.apiUrl}/`, propietario);
   }
 
-  addPropietario(propietario: Propietario): void {
-    const newId = Math.max(...this.propietarioList.map(m => m.id)) + 1;
-    propietario.id = newId;
-    this.propietarioList.push({ ...propietario });
+  deletePropietario(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-
 }
