@@ -9,6 +9,7 @@ import { PropietarioFormComponent } from './propietario/propietario-form/propiet
 import { PropietarioDetailsComponent } from './propietario/propietario-details/propietario-details.component';
 import { PropietarioListComponent } from './propietario/propietario-list/propietario-list.component';
 import { PropietarioPanelComponent } from './propietario/propietario-panel/propietario-panel.component';
+import { PropietarioMascotasComponent } from './propietario/propietario-mascotas/propietario-mascotas.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent}, //http://localhost:4200/login
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'propietarioForm/add', component: PropietarioFormComponent}, //http://localhost:4200/propietarioForm/add
   {path: 'propietario/detail/:id', component: PropietarioDetailsComponent}, //http://localhost:4200/propietario/detail/1
   {path: 'propietarioForm/update/:id', component: PropietarioFormComponent}, //http://localhost:4200/propietarioForm/update/1
+  {path: 'propietarioMascotas', component: PropietarioMascotasComponent}, //http://localhost:4200/propietarioMascotas
   {path: 'mascotas', component: MascotaListComponent}, //http://localhost:4200/mascotas
   {path: 'mascota/detail/:id', component: MascotaDetailComponent}, //http://localhost:4200/mascota/detail/1
   {path: 'mascotaForm/add', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/add

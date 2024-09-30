@@ -22,10 +22,10 @@ export class LoginPageComponent {
 
   onSubmit() {
     if (this.role === 'dueno') {
-      const propietario = this.propietarioService.findAll().find(
-        p => p.correo === this.correo && p.contrasena === this.contrasena
-      );
-      if (propietario) {
+      const propietario = this.propietarioService.findPropietarioByEmail(this.correo);
+      if (propietario && propietario.contrasena === this.contrasena) {
+        // Guardar el correo en el localStorage
+        localStorage.setItem('currentUserEmail', this.correo);
         this.router.navigate(['/propietarioPanel']);
       } else {
         alert('Credenciales inválidas para dueño de mascota');

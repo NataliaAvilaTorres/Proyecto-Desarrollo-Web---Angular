@@ -24,7 +24,7 @@ export class PropietarioService {
           edad: 5,
           peso: 30,
           enfermedad: "Ninguna",
-          fotoUrl: "assets/images/firulais.png",
+          fotoUrl: "https://pampermut.com/blog/wp-content/uploads/2020/05/Como-es-el-caracter-de-tu-perro-segun-su-horoscopo-scaled.jpg",
           estado: "Sano",
         },
         {
@@ -34,7 +34,7 @@ export class PropietarioService {
           edad: 3,
           peso: 25,
           enfermedad: "Alergia",
-          fotoUrl: "assets/images/luna.png",
+          fotoUrl: "https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg",
           estado: "En tratamiento"
         }
       ]
@@ -78,6 +78,11 @@ export class PropietarioService {
     const propietario:Propietario = this.propietarioList.find(o => o.id === id)!;
     return propietario;
   }
+
+  findPropietarioByEmail(email: string): Propietario | undefined {
+    return this.propietarioList.find(p => p.correo === email);
+  }
+
 
   updatePropietario(propietario: Propietario): void {
     const index = this.propietarioList.findIndex(m => m.id === propietario.id);
