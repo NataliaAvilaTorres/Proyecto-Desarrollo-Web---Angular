@@ -21,10 +21,12 @@ export class PropietarioListComponent {
   //Realizo llamados cuando ya esta cargada la interfaz
   ngOnInit(): void {
     this.propietarioList = this.propietarioService.findAll();
+    this.originalMascotaList = [...this.propietarioList]; // Almacena la lista original
   }
 
   //Atributos
   propietarioList!: Propietario[];
+  originalMascotaList!: Propietario[];
   selectedPropietario!: Propietario;
 
   eliminarPropietario(propietario: Propietario) {
@@ -38,6 +40,22 @@ export class PropietarioListComponent {
 
   editarPropietario(propietario: Propietario) {
     this.router.navigate(['/propietarioForm/update', propietario.id]); // Navega a la ruta de formulario con el ID de la mascota.
+  }
+
+  buscarPropietarios(event: any) {
+    const searchTerm = event.target.value.toLowerCase().trim();
+    
+    if (searchTerm === '') {
+      // Si el término de búsqueda está vacío, mostrar todas las mascotas
+      this.propietarioList = [...this.originalMascotaList];
+    } else {
+      // Si hay un término de búsqueda, filtrar las mascotas
+      this.propietarioList = this.originalMascotaList.filter(propietario => 
+        Object.values(propietario).some((val: any) => 
+          val && val.toString().toLowerCase().includes(searchTerm)
+        )
+      );
+    }
   }
 
 }

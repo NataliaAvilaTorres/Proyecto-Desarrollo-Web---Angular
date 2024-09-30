@@ -109,7 +109,7 @@
         <div class="buscador-container">
             <h1>BUSCADOR</h1>
             <div class="buscador-input">
-                <input type="text" id="searchInput" placeholder="Buscar mascota..." onkeyup="buscarMascotas()" />
+                <input type="text" id="searchInput" placeholder="Buscar mascota..." (keyup)="buscarMascotas($event)" />
                 <span class="icon-search">&#128269;</span>
             </div>
         </div>

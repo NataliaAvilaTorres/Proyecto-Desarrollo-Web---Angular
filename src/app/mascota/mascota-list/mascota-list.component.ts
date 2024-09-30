@@ -21,10 +21,12 @@ export class MascotaListComponent {
   //Realizo llamados cuando ya esta cargada la interfaz
   ngOnInit(): void {
     this.mascotaList = this.mascotaService.findAll();
+    this.originalMascotaList = [...this.mascotaList]; // Almacena la lista original
   }
 
   //Atributos
   mascotaList!: Mascota[];
+  originalMascotaList!: Mascota[]; // Nueva propiedad para guardar la lista original
   selectedMascota!: Mascota;
 
   eliminarMascota(mascota: Mascota) {
@@ -40,5 +42,20 @@ export class MascotaListComponent {
     this.router.navigate(['/mascotaForm/update', mascota.id]); // Navega a la ruta de formulario con el ID de la mascota.
   }
 
-  
+  buscarMascotas(event: any) {
+    const searchTerm = event.target.value.toLowerCase().trim();
+
+    if (searchTerm === '') {
+      // Si el término de búsqueda está vacío, restaurar la lista original
+      this.mascotaList = [...this.originalMascotaList];
+    } else {
+      // Filtrar las mascotas según el término de búsqueda
+      this.mascotaList = this.originalMascotaList.filter(mascota =>
+        Object.values(mascota).some((val: any) =>
+          val && val.toString().toLowerCase().includes(searchTerm)
+        )
+      );
+    }
+  }
+
 }

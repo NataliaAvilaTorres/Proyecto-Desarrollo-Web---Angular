@@ -1,26 +1,10 @@
-<img
-  src="assets/images/General/barrasola.png"
-  alt="Barra Decorativa"
-  class="barra-decorativa"
-/>
-<img
-  src="assets/images/General/footer.png"
-  alt="Footer Decorativo"
-  class="footer-decorativa"
-/>
+<img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
+<img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
 
 <div class="sidebar close">
   <div class="logo">
-    <img
-      src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png"
-      alt="Logo Dogin"
-      class="logo-img"
-    />
-    <img
-      src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png"
-      alt="Nombre Dogin"
-      class="logo-name"
-    />
+    <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
+    <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
   </div>
 
   <ul class="nav-list">
@@ -124,12 +108,7 @@
     <div class="buscador-container">
       <h1>BUSCADOR</h1>
       <div class="buscador-input">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Buscar dueño..."
-          onkeyup="buscarMascotas()"
-        />
+        <input type="text" id="searchInput" placeholder="Buscar propietario..." (keyup)="buscarPropietarios($event)" />
         <span class="icon-search">&#128269;</span>
       </div>
     </div>
@@ -160,9 +139,9 @@
 
             <!--BOTONES DE ACCIONES-->
             <td>
-                <button class="btn-detalles" (click) = "mostrarPropietario(propietario)">Ver Detalles</button>
-                <button class="btn-editar" (click) = "editarPropietario(propietario)">Editar</button>
-                <button class="btn-eliminar" (click) = "eliminarPropietario(propietario)">Eliminar</button>
+              <button class="btn-detalles" (click)="mostrarPropietario(propietario)">Ver Detalles</button>
+              <button class="btn-editar" (click)="editarPropietario(propietario)">Editar</button>
+              <button class="btn-eliminar" (click)="eliminarPropietario(propietario)">Eliminar</button>
             </td>
           </tr>
         </tbody>

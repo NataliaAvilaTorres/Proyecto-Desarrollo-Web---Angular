@@ -34,4 +34,20 @@ export class PropietarioMascotasComponent implements OnInit {
     );
   }
 
+  filtrar(event: any) {
+    const searchTerm = event.target.value.toLowerCase().trim();
+    
+    if (searchTerm === '') {
+      // Si el término de búsqueda está vacío, mostrar todas las mascotas
+      this.filteredMascotas = [...this.mascotas];
+    } else {
+      // Si hay un término de búsqueda, filtrar las mascotas
+      this.filteredMascotas = this.mascotas.filter(mascota => 
+        Object.values(mascota).some((val: any) => 
+          val && val.toString().toLowerCase().includes(searchTerm)
+        )
+      );
+    }
+  }
+
 }
