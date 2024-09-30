@@ -25,7 +25,7 @@ export class PropietarioService {
           peso: 30,
           enfermedad: "Ninguna",
           fotoUrl: "assets/images/firulais.png",
-          estado: "Sano"
+          estado: "Sano",
         },
         {
           id: 2,

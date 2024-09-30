@@ -145,6 +145,15 @@
                         <option value="Inactivo">Inactivo</option>
                     </select>
                 </div>
+
+                <div class="form_group">
+                    <label class="sub_title" for="owner">Propietario</label>
+                    <select id="owner" name="propietario" [(ngModel)]="selectedPropietario" class="form_style" required>
+                        <option value="" disabled selected>Seleccione un propietario</option>
+                        <option *ngFor="let propietario of propietarioList" [value]="propietario.cedula">{{ propietario.cedula }}</option>
+                    </select>
+                </div>
+
             
                 <div>
                     <button type="submit" class="btn">GUARDAR</button>

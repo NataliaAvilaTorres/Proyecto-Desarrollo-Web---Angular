@@ -3,6 +3,8 @@ import { Mascota } from '../mascota';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { NgForm } from '@angular/forms';
+import { Propietario } from 'src/app/propietario/propietario';
+import { PropietarioService } from 'src/app/service/propietario.service';
 
 @Component({
   selector: 'app-mascota-form',
@@ -18,12 +20,17 @@ export class MascotaFormComponent {
     peso: 0,
     enfermedad: '',
     fotoUrl: '',
-    estado: ''
+    estado: '',
+    propietario: { id: 0, nombre: '', cedula: '', correo: '', celular: '', contrasena: '', mascotas: [] }
   };
+
+  propietarioList: Propietario[] = [];
+  selectedPropietario: string = '';  // Añadimos la variable
   isEditing: boolean = false;
 
   constructor(
     private mascotaService: MascotaService,
+    private propietarioService: PropietarioService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -35,6 +42,9 @@ export class MascotaFormComponent {
       const mascotaId = +id;
       this.mascota = this.mascotaService.findMascotaById(mascotaId);
     }
+  
+    // Cargar lista de propietarios directamente si findAll() devuelve un arreglo
+    this.propietarioList = this.propietarioService.findAll();
   }
 
   updateMascota(form: NgForm): void {

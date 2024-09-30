@@ -1,17 +1,14 @@
 /* Contenedor principal */
 .container {
-    margin: 140px auto;
+    margin: 140px 100px;
     padding: 20px;
     background: linear-gradient(135deg, #fff, #f9f9f9);
     border-radius: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     text-align: center;
     width: max-content;
-    /* Ajusta el contenedor al contenido */
     max-width: 100%;
-    /* Evitar que crezca más que el viewport */
     overflow-x: auto;
-    /* Para que en caso de que la tabla sea más grande, haga scroll horizontal */
 }
 
 /* Título principal */
@@ -35,6 +32,7 @@ h1.servicios {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-align: center;
+
 }
 
 h5 {

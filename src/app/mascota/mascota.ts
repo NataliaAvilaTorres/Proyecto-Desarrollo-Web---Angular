@@ -1,3 +1,5 @@
+import { Propietario } from "../propietario/propietario";
+
 export interface Mascota {
     id: number;
     nombre: string;
@@ -7,4 +9,5 @@ export interface Mascota {
     enfermedad: string;
     fotoUrl: string;
     estado: string;
+    propietario?: Propietario
 }
