@@ -25,7 +25,7 @@ export class PropietarioService {
   }
 
   addPropietario(propietario: Propietario): Observable<Propietario> {
-    return this.http.post<Propietario>(`${this.apiUrl}/`, propietario);
+    return this.http.post<Propietario>(`${this.apiUrl}`, propietario);
   }
 
   deletePropietario(id: number): Observable<void> {
