@@ -132,14 +132,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="mascota : ${propietario.mascotas}">
-                                    <td th:text="${mascota.id}"></td>
-                                    <td th:text="${mascota.nombre}"></td>
-                                    <td th:text="${mascota.raza}"></td>
-                                    <td th:text="${mascota.edad}"></td>
-                                    <td th:text="${mascota.estado}"></td>
+                                <tr *ngFor="let mascota of propietario.mascotas">
+                                    <td>{{ mascota.id }}</td>
+                                    <td>{{ mascota.nombre }}</td>
+                                    <td>{{ mascota.raza }}</td>
+                                    <td>{{ mascota.edad }}</td>
+                                    <td>{{ mascota.estado }}</td>
                                     <td>
-                                        <a th:href="@{/pet/find/{id}(id=${mascota.id})}" class="btn-detalles">Ver
+                                        <a [routerLink]="['/mascota/detail/', mascota.id]" class="btn-detalles">Ver
                                             Detalles</a>
                                     </td>
                                 </tr>

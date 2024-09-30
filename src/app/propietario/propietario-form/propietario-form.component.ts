@@ -17,7 +17,8 @@ export class PropietarioFormComponent {
     cedula: '',
     correo: '',
     celular: '',
-    contrasena: ''
+    contrasena: '',
+    mascotas: []
   };
   isEditing: boolean = false;
 

@@ -15,7 +15,29 @@ export class PropietarioService {
       cedula: "1234567890",
       correo: "cristian@example.com",
       celular: "3001234567",
-      contrasena: "pass1234"
+      contrasena: "pass1234",
+      mascotas: [
+        {
+          id: 1,
+          nombre: "Firulais",
+          raza: "Golden Retriever",
+          edad: 5,
+          peso: 30,
+          enfermedad: "Ninguna",
+          fotoUrl: "assets/images/firulais.png",
+          estado: "Sano"
+        },
+        {
+          id: 2,
+          nombre: "Luna",
+          raza: "Labrador",
+          edad: 3,
+          peso: 25,
+          enfermedad: "Alergia",
+          fotoUrl: "assets/images/luna.png",
+          estado: "En tratamiento"
+        }
+      ]
     },
     {
       id: 2,
@@ -23,7 +45,19 @@ export class PropietarioService {
       cedula: "9876543210",
       correo: "camila@example.com",
       celular: "3019876543",
-      contrasena: "camila5678"
+      contrasena: "camila5678",
+      mascotas: [
+        {
+          id: 3,
+          nombre: "Max",
+          raza: "Bulldog",
+          edad: 4,
+          peso: 20,
+          enfermedad: "Displasia de cadera",
+          fotoUrl: "assets/images/max.png",
+          estado: "En tratamiento"
+        }
+      ]
     },
     {
       id: 3,
@@ -31,7 +65,8 @@ export class PropietarioService {
       cedula: "1122334455",
       correo: "andres@example.com",
       celular: "3021122334",
-      contrasena: "andres4321"
+      contrasena: "andres4321",
+      mascotas: []
     }
   ];
 
