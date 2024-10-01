@@ -43,32 +43,20 @@ export class MascotaFormComponent implements OnInit {
       const mascotaId = +id;
 
       // Obtener la mascota y los propietarios
+      console.log('Fetching mascota with ID:', mascotaId);
       forkJoin({
         mascota: this.mascotaService.findMascotaById(mascotaId),
         propietarios: this.propietarioService.findAll()
       }).subscribe(
         ({ mascota, propietarios }) => {
           // Asignar los datos de la mascota y la lista de propietarios
+          console.log('Mascota data fetched:', mascota);
           this.mascota = mascota;
+          console.log('Propietarios list fetched:', propietarios);
           this.propietarioList = propietarios;
 
-          // Verificar si `propietario` está presente y tiene un `id`
-          console.log('ID de propietario de la mascota:', this.mascota.propietario?.id);
-          console.log('ID de propietarios en lista:', this.propietarioList.map(p => p.id));
-
-          // Buscar y asignar el propietario seleccionado asegurando la comparación de `id`s como cadenas
-          this.selectedPropietario = this.propietarioList.find(
-            p => String(p.id) === String(this.mascota.propietario?.id)
-          ) || null;
-
-          // Si se encuentra el propietario, asegúrate de sincronizarlo
-          if (this.selectedPropietario) {
-            this.mascota.propietario = this.selectedPropietario;
-          }
-
-          console.log('Mascota:', this.mascota);
-          console.log('Propietarios:', this.propietarioList);
-          console.log('Selected Propietario:', this.selectedPropietario);
+          // Intentar encontrar el propietario de la mascota
+          this.findAndSetOwner();
         },
         error => {
           console.error('Error fetching data', error);
@@ -76,9 +64,11 @@ export class MascotaFormComponent implements OnInit {
       );
     } else {
       // Si no se está editando una mascota, solo cargar la lista de propietarios
+      console.log('Not editing any mascota, fetching propietarios list only.');
       this.propietarioService.findAll().subscribe(
         data => {
           this.propietarioList = data;
+          console.log('Propietarios list:', this.propietarioList);
         },
         error => {
           console.error('Error fetching propietarios', error);
@@ -87,15 +77,56 @@ export class MascotaFormComponent implements OnInit {
     }
   }
 
+  /**
+   * Encuentra y asigna el propietario de la mascota.
+   */
+  private findAndSetOwner(): void {
+    // Verificar si la mascota ya tiene un propietario asignado por ID
+    console.log('Checking if the mascota has an existing propietario by ID...');
+    this.selectedPropietario = this.propietarioList.find(
+      p => p.id === this.mascota.propietario?.id
+    ) || null;
+
+    console.log('Selected propietario based on ID:', this.selectedPropietario);
+
+    // Si no se encontró el propietario por ID, buscar en la lista de mascotas de cada propietario
+    if (!this.selectedPropietario) {
+      console.log('No propietario found by ID, searching through each propietario\'s mascotas...');
+      this.selectedPropietario = this.propietarioList.find(propietario =>
+        propietario.mascotas.some(m => m.id === this.mascota.id)
+      ) || null;
+
+      console.log('Selected propietario after checking mascotas:', this.selectedPropietario);
+    }
+
+    // Si no se encontró propietario y estamos editando, mostrar mensaje de error
+    if (!this.selectedPropietario) {
+      console.warn('Warning: No propietario found for this mascota!');
+    }
+
+    // Sincronizar el propietario con la mascota si se encontró uno
+    if (this.selectedPropietario) {
+      this.mascota.propietario = this.selectedPropietario;
+    }
+
+    console.log('Final selected propietario:', this.selectedPropietario);
+  }
+
   updateMascota(form: NgForm): void {
+    console.log('Form is valid:', form.valid);
     if (form.valid) {
+      console.log('Selected propietario is:', this.selectedPropietario);
       if (this.selectedPropietario) {
         this.mascota.propietario = this.selectedPropietario;
       }
 
       if (this.isEditing) {
+        console.log('Updating mascota:', this.mascota);
+        console.log('Data being sent to the backend:', JSON.stringify(this.mascota));
+
         this.mascotaService.updateMascota(this.mascota).subscribe(
           data => {
+            console.log('Mascota updated successfully:', data);
             this.router.navigate(['/mascotas']);
           },
           error => {
@@ -103,8 +134,11 @@ export class MascotaFormComponent implements OnInit {
           }
         );
       } else {
+        console.log('Adding new mascota:', this.mascota);
+        console.log('Data being sent to the backend:', JSON.stringify(this.mascota));
         this.mascotaService.addMascota(this.mascota).subscribe(
           data => {
+            console.log('Mascota added successfully:', data);
             this.router.navigate(['/mascotas']);
           },
           error => {

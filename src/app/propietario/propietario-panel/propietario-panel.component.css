@@ -772,3 +772,34 @@ tbody td.active {
     left: 1000px;
     /* Ajusta la posición horizontal */
 }
+
+/* Estilo base para el tooltip */
+.tooltip {
+    visibility: hidden; /* Oculta el tooltip por defecto */
+    background-color: rgba(0, 0, 0, 0.8); /* Color de fondo con transparencia */
+    color: #fff; /* Color del texto */
+    text-align: center; /* Centra el texto */
+    border-radius: 10px; /* Bordes redondeados más grandes */
+    padding: 8px 12px; /* Espaciado interno más amplio */
+    position: absolute; /* Permite posicionamiento flotante */
+    z-index: 1; /* Coloca el tooltip sobre otros elementos */
+    margin-left: 75px; /* Distancia del tooltip al ítem de la barra */
+    font-size: 14px; /* Tamaño de la fuente más grande */
+    white-space: nowrap; /* Evita que el texto se rompa */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves */
+    opacity: 0; /* Empieza invisible para la animación */
+    transform: translateY(-10px); /* Desplazamiento inicial */
+}
+
+/* Muestra el tooltip cuando se pasa el mouse por encima del contenedor del enlace */
+.nav-list li:hover .tooltip {
+    visibility: visible;
+    opacity: 1; /* Hace visible el tooltip */
+    transform: translateY(0); /* Animación hacia arriba */
+}
+
+/* Ajusta la posición del tooltip */
+.nav-list li {
+    position: relative; /* Necesario para que el tooltip se posicione correctamente */
+}

@@ -7,77 +7,77 @@
     </div>
 
     <ul class="nav-list">
+        <!-- Cada enlace ahora lleva a la ruta correcta del servidor -->
         <li>
             <a href="/veterinarioPanel">
                 <i class="fab fa-microsoft"></i>
-                <span class="link-name">Panel</span>
+                <span class="tooltip">Panel</span> <!-- Tooltip agregado -->
             </a>
         </li>
 
         <li>
             <a href="/mascotaForm/add">
                 <i class="fa-solid fa-plus"></i>
-                <span class="link-name">Agregar Mascota</span>
+                <span class="tooltip">Agregar Mascota</span> <!-- Tooltip agregado -->
             </a>
         </li>
 
         <li>
             <a href="/propietarioForm/add">
                 <i class="fa-solid fa-user-plus"></i>
-                <span class="link-name">Agregar Propietario</span>
+                <span class="tooltip">Agregar Propietario</span> <!-- Tooltip agregado -->
             </a>
         </li>
 
         <li>
             <a href="#">
                 <i class="fa-solid fa-suitcase-medical"></i>
-                <span class="link-name">Asignar Tratamiento</span>
+                <span class="tooltip">Asignar Tratamiento</span> <!-- Tooltip agregado -->
             </a>
         </li>
 
         <li>
             <a href="#">
                 <i class="fas fa-bookmark"></i>
-                <span class="link-name">Ver Historial</span>
+                <span class="tooltip">Ver Historial</span> <!-- Tooltip agregado -->
             </a>
         </li>
 
         <li>
             <a href="/mascotas">
                 <i class="fa-solid fa-shield-dog"></i>
-                <span class="link-name">Listado de Mascotas</span>
+                <span class="tooltip">Listado de Mascotas</span> <!-- Tooltip agregado -->
             </a>
         </li>
 
         <li>
             <a href="/propietarios">
                 <i class="fa-solid fa-list-ul"></i>
-                <span class="link-name">Listado de Propietarios</span>
+                <span class="tooltip">Listado de Propietarios</span> <!-- Tooltip agregado -->
             </a>
         </li>
-
 
         <li>
             <div class="profile-details">
                 <div class="profile-content">
                     <img src="assets/images/General/user.jpg" alt="Imagen del Usuario" />
                 </div>
-
                 <div class="name-job">
                     <div class="name" th:text="${primerNombre}">Nombre del Usuario</div>
                     <div class="job">Veterinario</div>
                 </div>
-                <a href="/veterinario/logout"><i class="fas fa-right-to-bracket"></i></a>
+                <a href="/logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="tooltip">Cerrar Sesión</span> <!-- Tooltip agregado -->
+                </a>
             </div>
         </li>
     </ul>
+
 </div>
 
 <div class="home-section">
-    <div class="home-content">
-        <i class="fas fa-bars"></i>
-        <span class="text">Menu</span>
-    </div>
+    
 
     <!-- Sección de Panel -->
     <section id="panel" class="content-section">
