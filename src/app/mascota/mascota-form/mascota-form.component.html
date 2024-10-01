@@ -149,11 +149,11 @@
                 <div class="form_group">
                     <label class="sub_title" for="owner">Propietario</label>
                     <select id="owner" name="propietario" [(ngModel)]="selectedPropietario" class="form_style" required>
-                        <option *ngFor="let propietario of propietarioList" [ngValue]="propietario">
-                          {{ propietario.nombre }}
-                        </option>
-                      </select>                      
-                </div>
+                      <option *ngFor="let propietario of propietarioList" [ngValue]="propietario">
+                        {{ propietario.nombre }}
+                      </option>
+                    </select>
+                  </div>
 
             
                 <div>
