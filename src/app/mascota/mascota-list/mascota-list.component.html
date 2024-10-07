@@ -58,20 +58,12 @@
             </a>
         </li>
 
-        <li>
-            <div class="profile-details">
-                <div class="profile-content">
-                    <img src="assets/images/General/user.jpg" alt="Imagen del Usuario" />
-                </div>
-                <div class="name-job">
-                    <div class="name" th:text="${primerNombre}">Nombre del Usuario</div>
-                    <div class="job">Veterinario</div>
-                </div>
-                <a href="/logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="tooltip">Cerrar Sesión</span> <!-- Tooltip agregado -->
-                </a>
-            </div>
+        <li style="margin-top: 300px;">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+                <span class="tooltip">Cerrar Sesión</span> <!-- Tooltip agregado -->
+            </a>
+
         </li>
     </ul>
 
@@ -110,7 +102,6 @@
             <h1>BUSCADOR</h1>
             <div class="buscador-input">
                 <input type="text" id="searchInput" placeholder="Buscar mascota..." (keyup)="buscarMascotas($event)" />
-                <span class="icon-search">&#128269;</span>
             </div>
         </div>
     </section>

@@ -514,3 +514,8 @@
 .nav-list li {
     position: relative; /* Necesario para que el tooltip se posicione correctamente */
 }
+
+i.fa-solid fa-right-from-bracket
+{
+    margin-top: 100px;
+}
