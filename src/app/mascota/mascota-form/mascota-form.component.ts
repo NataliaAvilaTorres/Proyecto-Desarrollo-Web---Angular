@@ -26,8 +26,11 @@ export class MascotaFormComponent implements OnInit {
   };
 
   propietarioList: Propietario[] = [];
+  filteredPropietarios: Propietario[] = []; // Propietarios filtrados para el autocompletado
+  propietarioSearch: string = ''; // Campo de búsqueda
   selectedPropietario: Propietario | null = null;
   isEditing: boolean = false;
+  isDropdownVisible: boolean = false; 
 
   constructor(
     private mascotaService: MascotaService,
@@ -54,6 +57,7 @@ export class MascotaFormComponent implements OnInit {
           this.mascota = mascota;
           console.log('Propietarios list fetched:', propietarios);
           this.propietarioList = propietarios;
+          this.filteredPropietarios = propietarios;
 
           // Intentar encontrar el propietario de la mascota
           this.findAndSetOwner();
@@ -68,6 +72,7 @@ export class MascotaFormComponent implements OnInit {
       this.propietarioService.findAll().subscribe(
         data => {
           this.propietarioList = data;
+          this.filteredPropietarios = data; 
           console.log('Propietarios list:', this.propietarioList);
         },
         error => {
@@ -107,9 +112,39 @@ export class MascotaFormComponent implements OnInit {
     // Sincronizar el propietario con la mascota si se encontró uno
     if (this.selectedPropietario) {
       this.mascota.propietario = this.selectedPropietario;
+      this.propietarioSearch = this.selectedPropietario.cedula;
+
     }
 
     console.log('Final selected propietario:', this.selectedPropietario);
+  }
+
+  onSearchChange(): void {
+    const search = this.propietarioSearch.toLowerCase();
+    this.filteredPropietarios = this.propietarioList.filter(propietario =>
+      propietario.cedula.toLowerCase().includes(search)
+    );
+  }
+
+  /**
+   * Muestra la lista desplegable.
+   */
+  showDropdown(): void {
+    this.isDropdownVisible = true;
+  }
+
+  /**
+   * Oculta la lista desplegable.
+   */
+  hideDropdown(): void {
+    setTimeout(() => this.isDropdownVisible = false, 200);
+  }
+
+  selectPropietario(propietario: Propietario): void {
+    this.selectedPropietario = propietario;
+    this.propietarioSearch = propietario.cedula; // Rellenar el campo de búsqueda con la cédula seleccionada
+    this.isDropdownVisible = false; // Ocultar la lista después de seleccionar
+    this.mascota.propietario = propietario; // Sincronizar propietario seleccionado con la mascota
   }
 
   updateMascota(form: NgForm): void {

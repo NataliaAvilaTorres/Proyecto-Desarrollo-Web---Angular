@@ -503,6 +503,32 @@
     /* Ajusta este valor según sea necesario */
 }
 
+
+.autocomplete-list {
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  width: 100%;
+  bottom: 100%; /* Muestra la lista debajo del input */
+  left: 0;
+}
+
+.autocomplete-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background-color: #f0f0f0;
+}
+
+
 /* Estilo base para el tooltip */
 .tooltip {
     visibility: hidden; /* Oculta el tooltip por defecto */

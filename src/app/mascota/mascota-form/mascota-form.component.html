@@ -146,16 +146,29 @@
                     </select>
                 </div>
 
-                <div class="form_group">
-                    <label class="sub_title" for="owner">Propietario</label>
-                    <select id="owner" name="propietario" [(ngModel)]="selectedPropietario" class="form_style" required>
-                      <option *ngFor="let propietario of propietarioList" [ngValue]="propietario">
-                        {{ propietario.cedula }}
-                      </option>
-                    </select>
-                  </div>
+                <div class="form_group" style="position: relative;">
+                    <label class="sub_title" for="propietarioSearch">Propietario</label>
+                    <!-- Campo de búsqueda de propietario -->
+                    <input type="text"
+                           id="propietarioSearch"
+                           [(ngModel)]="propietarioSearch"
+                           (input)="onSearchChange()"
+                           (focus)="showDropdown()"
+                           (blur)="hideDropdown()"
+                           class="form_style"
+                           placeholder="Busca una cédula de propietario..."
+                           name="propietarioSearch"
+                           required>
 
-            
+                    <!-- Lista de resultados filtrados -->
+                    <ul *ngIf="isDropdownVisible && filteredPropietarios.length > 0" class="autocomplete-list">
+                        <li *ngFor="let propietario of filteredPropietarios"
+                            (mousedown)="selectPropietario(propietario)">
+                            {{ propietario.cedula }}
+                        </li>
+                    </ul>
+                </div>
+
                 <div>
                     <button type="submit" class="btn">GUARDAR</button>
                 </div>
