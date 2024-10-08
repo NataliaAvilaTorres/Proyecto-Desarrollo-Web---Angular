@@ -10,6 +10,8 @@ import { PropietarioDetailsComponent } from './propietario/propietario-details/p
 import { PropietarioListComponent } from './propietario/propietario-list/propietario-list.component';
 import { PropietarioPanelComponent } from './propietario/propietario-panel/propietario-panel.component';
 import { PropietarioMascotasComponent } from './propietario/propietario-mascotas/propietario-mascotas.component';
+import { AdministradorPanelComponent } from './administrador/administrador-panel/administrador-panel.component';
+import { AdminMascotaFormComponent } from './administrador/admin-mascota-form/admin-mascota-form.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent}, //http://localhost:4200/login
@@ -23,7 +25,17 @@ const routes: Routes = [
   {path: 'mascotas', component: MascotaListComponent}, //http://localhost:4200/mascotas
   {path: 'mascota/detail/:id', component: MascotaDetailComponent}, //http://localhost:4200/mascota/detail/1
   {path: 'mascotaForm/add', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/add
-  {path: 'mascotaForm/update/:id', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/update/1
+  {path: 'adminPanel', component: AdministradorPanelComponent}, //http://localhost:4200/adminPanel
+  { path: 'admin', component: AdminMascotaFormComponent, 
+    children: [
+      { path: 'mascotaForm/add', component: MascotaFormComponent } // http://localhost:4200/admin/mascotaForm/add
+    ]
+  },
+  { path: 'admin', component: AdminMascotaFormComponent, 
+    children: [
+      { path: 'mascotas', component: MascotaListComponent } // http://localhost:4200/admin/mascotas
+    ]
+  },
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 <img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
 <img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
-<div class="sidebar close">
+<div class="sidebar close" *ngIf="!isAdminRoute">
     <div class="logo">
         <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
         <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
@@ -70,7 +70,6 @@
 
 <div class="home-section">
     
-
     <!-- Sección de Panel -->
     <section id="panel" class="content-section">
         <h2>Panel</h2>

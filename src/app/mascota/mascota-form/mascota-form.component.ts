@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { Propietario } from 'src/app/propietario/propietario';
 import { PropietarioService } from 'src/app/service/propietario.service';
 import { forkJoin } from 'rxjs';
+import { SidebarService } from 'src/app/service/sidebar.service';
 
 @Component({
   selector: 'app-mascota-form',
@@ -30,9 +31,12 @@ export class MascotaFormComponent implements OnInit {
   propietarioSearch: string = ''; // Campo de búsqueda
   selectedPropietario: Propietario | null = null;
   isEditing: boolean = false;
-  isDropdownVisible: boolean = false; 
+  isDropdownVisible: boolean = false;
+
+  isAdminRoute: boolean = false;
 
   constructor(
+    private sidebarService: SidebarService,
     private mascotaService: MascotaService,
     private propietarioService: PropietarioService,
     private route: ActivatedRoute,
@@ -40,6 +44,11 @@ export class MascotaFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    // Usar el servicio para verificar la ruta
+    this.sidebarService.checkIfAdminRoute();
+    this.isAdminRoute = this.sidebarService.isAdminRoute();
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditing = true;
@@ -72,7 +81,7 @@ export class MascotaFormComponent implements OnInit {
       this.propietarioService.findAll().subscribe(
         data => {
           this.propietarioList = data;
-          this.filteredPropietarios = data; 
+          this.filteredPropietarios = data;
           console.log('Propietarios list:', this.propietarioList);
         },
         error => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { Mascota } from '../mascota';
 import { Router } from '@angular/router';
+import { SidebarService } from 'src/app/service/sidebar.service';
 
 @Component({
   selector: 'app-mascota-list',
@@ -11,14 +12,21 @@ import { Router } from '@angular/router';
 export class MascotaListComponent implements OnInit {
 
   constructor(
+    private sidebarService: SidebarService,
     private mascotaService: MascotaService,
     private router: Router
   ) { }
 
   mascotaList: Mascota[] = [];
   originalMascotaList: Mascota[] = [];
+  isAdminRoute: boolean = false;
 
   ngOnInit(): void {
+
+        // Usar el servicio para verificar la ruta
+        this.sidebarService.checkIfAdminRoute();
+        this.isAdminRoute = this.sidebarService.isAdminRoute();
+
     this.mascotaService.findAll().subscribe(
       data => {
         this.mascotaList = data;

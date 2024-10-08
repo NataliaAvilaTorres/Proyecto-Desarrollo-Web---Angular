@@ -20,7 +20,9 @@ import { PropietarioPanelComponent } from './propietario/propietario-panel/propi
 import { PropietarioMascotasComponent } from './propietario/propietario-mascotas/propietario-mascotas.component';
 
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // Add this
+import { RouterModule } from '@angular/router';
+import { AdministradorPanelComponent } from './administrador/administrador-panel/administrador-panel.component';
+import { AdminMascotaFormComponent } from './administrador/admin-mascota-form/admin-mascota-form.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,9 @@ import { RouterModule } from '@angular/router'; // Add this
     PropietarioDetailsComponent,
     PropietarioListComponent,
     PropietarioPanelComponent,
-    PropietarioMascotasComponent
-  ],
+    PropietarioMascotasComponent,
+    AdministradorPanelComponent,
+    AdminMascotaFormComponent,  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
