@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { Mascota } from '../mascota';
-import { Router } from '@angular/router';
 import { SidebarService } from 'src/app/service/sidebar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mascota-list',
@@ -46,11 +46,13 @@ export class MascotaListComponent implements OnInit {
   }
 
   mostrarMascota(mascota: Mascota) {
-    this.router.navigate(['/mascota/detail', mascota.id]);
+    this.router.navigate(['/mascota/detail', mascota.id]); // Este funciona
   }
 
   editarMascota(mascota: Mascota) {
-    this.router.navigate(['/mascotaForm/update', mascota.id]);
+    console.log('Editing mascota with ID:', mascota.id); // Verificar el ID
+    this.router.navigate(['/mascotaForm/update', mascota.id])
+      .catch(err => console.error('Error al navegar:', err));
   }
 
   buscarMascotas(event: any) {

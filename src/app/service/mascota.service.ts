@@ -17,8 +17,9 @@ export class MascotaService {
   }
 
   findMascotaById(id: number): Observable<Mascota> {
+    console.log(`Fetching mascota with ID: ${id}`);
     return this.http.get<Mascota>(`${this.apiUrl}/${id}`);
-  }
+}
 
   updateMascota(mascota: Mascota): Observable<Mascota> {
     return this.http.put<Mascota>(`${this.apiUrl}/${mascota.id}`, mascota);

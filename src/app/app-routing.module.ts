@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'propietarioMascotas', component: PropietarioMascotasComponent}, //http://localhost:4200/propietarioMascotas
   {path: 'mascotas', component: MascotaListComponent}, //http://localhost:4200/mascotas
   {path: 'mascota/detail/:id', component: MascotaDetailComponent}, //http://localhost:4200/mascota/detail/1
+  {path: 'mascotaForm/update/:id', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/update/1
   {path: 'mascotaForm/add', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/add
   {path: 'adminPanel', component: AdministradorPanelComponent}, //http://localhost:4200/adminPanel
   { path: 'admin', component: AdminMascotaFormComponent, 
