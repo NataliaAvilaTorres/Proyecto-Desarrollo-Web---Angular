@@ -14,6 +14,7 @@ export class PropietarioMascotasComponent implements OnInit {
 
   constructor(private propietarioService: PropietarioService) { }
 
+  // Obtener todas las mascotas del propietario
   ngOnInit() {
     const userEmail = localStorage.getItem('currentUserEmail');
     if (userEmail) {
@@ -28,6 +29,7 @@ export class PropietarioMascotasComponent implements OnInit {
     }
   }
 
+  // Buscar mascotas
   buscarMascotas() {
     const searchInput = (document.getElementById('searchInput') as HTMLInputElement).value.toLowerCase();
     this.filteredMascotas = this.mascotas.filter(mascota => 
@@ -36,6 +38,7 @@ export class PropietarioMascotasComponent implements OnInit {
     );
   }
 
+  // Filtrar mascotas
   filtrar(event: any) {
     const searchTerm = event.target.value.toLowerCase().trim();
 

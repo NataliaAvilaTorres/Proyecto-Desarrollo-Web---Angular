@@ -15,8 +15,9 @@ export class PropietarioListComponent implements OnInit {
   constructor(
     private propietarioService: PropietarioService,
     private router: Router
-  ) {}
+  ) { }
 
+  // Obtener todos los propietarios
   ngOnInit(): void {
     this.propietarioService.findAll().subscribe(
       data => {
@@ -27,20 +28,24 @@ export class PropietarioListComponent implements OnInit {
     );
   }
 
+  // Eliminar propietario
   eliminarPropietario(propietario: Propietario) {
     this.propietarioService.deletePropietario(propietario.id).subscribe(() => {
       this.propietarioList = this.propietarioList.filter(p => p.id !== propietario.id);
     });
   }
 
+  // Ver propietario
   mostrarPropietario(propietario: Propietario) {
     this.router.navigate(['/propietario/detail', propietario.id]);
   }
 
+  // Editar propietario
   editarPropietario(propietario: Propietario) {
     this.router.navigate(['/propietarioForm/update', propietario.id]);
   }
 
+  // Buscar propietarios
   buscarPropietarios(event: any) {
     const searchTerm = event.target.value.toLowerCase().trim();
 

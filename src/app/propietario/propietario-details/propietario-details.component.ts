@@ -18,6 +18,7 @@ export class PropietarioDetailsComponent {
     private propietarioService: PropietarioService
   ) { }
 
+  // Obtiene el ID de la URL y busca el propietario correspondiente para el detalle del propietario
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {

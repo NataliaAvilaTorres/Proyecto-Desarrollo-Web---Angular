@@ -20,6 +20,7 @@ export class LoginPageComponent {
     private veterinarioService: VeterinarioService
   ) { }
 
+  // Función para iniciar sesión ayuda a guardar el correo y contraseña en el localStorage
   onSubmit() {
     if (this.role === 'dueno') {
       this.propietarioService.findAll().subscribe(propietarios => {

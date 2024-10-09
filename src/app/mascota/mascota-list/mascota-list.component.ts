@@ -23,9 +23,9 @@ export class MascotaListComponent implements OnInit {
 
   ngOnInit(): void {
 
-        // Usar el servicio para verificar la ruta
-        this.sidebarService.checkIfAdminRoute();
-        this.isAdminRoute = this.sidebarService.isAdminRoute();
+    // Usar el servicio para verificar la ruta
+    this.sidebarService.checkIfAdminRoute();
+    this.isAdminRoute = this.sidebarService.isAdminRoute();
 
     this.mascotaService.findAll().subscribe(
       data => {

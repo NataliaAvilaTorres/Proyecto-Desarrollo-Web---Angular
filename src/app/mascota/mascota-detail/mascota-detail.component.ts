@@ -17,8 +17,9 @@ export class MascotaDetailComponent {
     private mascotaService: MascotaService
   ) { }
 
+  // Obtiene el ID de la URL y busca la mascota correspondiente para el detalle de la mascota
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id'); // Obtiene el ID de la URL
+    const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.mascotaService.findMascotaById(+id).subscribe(
         data => {

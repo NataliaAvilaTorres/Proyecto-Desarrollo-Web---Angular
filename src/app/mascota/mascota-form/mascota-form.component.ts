@@ -49,6 +49,7 @@ export class MascotaFormComponent implements OnInit {
     this.sidebarService.checkIfAdminRoute();
     this.isAdminRoute = this.sidebarService.isAdminRoute();
 
+    // Obtiene el ID de la URL
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditing = true;
@@ -128,6 +129,7 @@ export class MascotaFormComponent implements OnInit {
     console.log('Final selected propietario:', this.selectedPropietario);
   }
 
+  // Autocompletado de propietarios
   onSearchChange(): void {
     const search = this.propietarioSearch.toLowerCase();
     this.filteredPropietarios = this.propietarioList.filter(propietario =>
@@ -149,6 +151,7 @@ export class MascotaFormComponent implements OnInit {
     setTimeout(() => this.isDropdownVisible = false, 200);
   }
 
+  // Seleccionar propietario
   selectPropietario(propietario: Propietario): void {
     this.selectedPropietario = propietario;
     this.propietarioSearch = propietario.cedula; // Rellenar el campo de búsqueda con la cédula seleccionada
@@ -156,6 +159,7 @@ export class MascotaFormComponent implements OnInit {
     this.mascota.propietario = propietario; // Sincronizar propietario seleccionado con la mascota
   }
 
+  // Enviando formulario
   updateMascota(form: NgForm): void {
     console.log('Form is valid:', form.valid);
     if (form.valid) {

@@ -28,6 +28,7 @@ export class PropietarioFormComponent {
     private router: Router
   ) { }
 
+  // Obtener el ID de la URL y buscar el propietario correspondiente para el formulario
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -39,6 +40,7 @@ export class PropietarioFormComponent {
     }
   }
 
+  // Enviando formulario
   updatePropietario(form: NgForm): void {
     if (form.valid) {
       if (this.isEditing) {
