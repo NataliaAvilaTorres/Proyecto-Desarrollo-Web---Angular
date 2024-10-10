@@ -23,6 +23,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AdministradorPanelComponent } from './administrador/administrador-panel/administrador-panel.component';
 import { AdminMascotaFormComponent } from './administrador/admin-mascota-form/admin-mascota-form.component';
+import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
+import { VeterinarioListComponent } from './veterinario/veterinario-list/veterinario-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { AdminMascotaFormComponent } from './administrador/admin-mascota-form/ad
     PropietarioPanelComponent,
     PropietarioMascotasComponent,
     AdministradorPanelComponent,
-    AdminMascotaFormComponent,  ],
+    AdminMascotaFormComponent,
+    VeterinarioFormComponent,
+    VeterinarioListComponent,  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

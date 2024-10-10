@@ -1,0 +1,143 @@
+<!-- Barra decorativa superior -->
+<img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
+<!-- Footer decorativo -->
+<img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
+
+<!-- Barra lateral de navegación -->
+<div class="sidebar close">
+    <div class="logo">
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
+    </div>
+
+    <ul class="nav-list">
+        <!-- Cada enlace ahora lleva a la ruta correcta del servidor -->
+        <li>
+            <a href="adminPanel">
+                <i class="fab fa-microsoft"></i>
+                <span class="tooltip">Panel</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="admin/mascotaForm/add">
+                <i class="fa-solid fa-plus"></i>
+                <span class="tooltip">Registrar Mascota</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="veterinarioForm/add">
+                <i class="fa-solid fa-user-plus"></i>
+                <span class="tooltip">Agregar Veterinario</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span class="tooltip">Asignar Tratamiento</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-suitcase-medical"></i>
+                <span class="tooltip">Ver Historial</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-shield-dog"></i>
+                <span class="tooltip">Listado de Mascotas</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="veterinarios">
+                <i class="fa-solid fa-user-nurse"></i>
+                <span class="tooltip">Gestion de Veterinarios</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li style="margin-top: 350px;">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+                <span class="tooltip">Cerrar Sesión</span> <!-- Tooltip agregado -->
+            </a>
+
+        </li>
+    </ul>
+</div>
+
+<div class="home-section">
+
+    <!-- Sección de Panel -->
+    <section id="panel" class="content-section">
+        <h2>Panel</h2>
+        <p>Aquí va el contenido del panel principal...</p>
+    </section>
+
+    <!-- Sección de Historial -->
+    <section id="historial" class="content-section" style="display: none;">
+        <h2>Historial</h2>
+        <p>Aquí va el contenido del historial...</p>
+    </section>
+
+    <!-- Sección de Mis Mascotas -->
+    <section id="mis-mascotas" class="content-section" style="display: none;">
+        <h2>Mis Mascotas</h2>
+        <p>Aquí va el contenido de mis mascotas...</p>
+    </section>
+
+    <img src="assets/images/General/addVet.png" alt="icono" class="iconoModificar" />
+
+    <header id="header">
+        <h1 class="form-title">AGREGAR VETERINARIO</h1>
+        <img src="assets/images/General/veterinario.png" alt="icono" class="iconoEdit" />
+    </header>
+    <main>
+        <div class="container">
+            <div class="form_area">
+                <p class="title">DATOS DEL VETERINARIO</p>
+                <form th:object="${mascota}" th:action="@{/pet/agregarMascota}" method="POST">
+                    <div class="form_group">
+                        <label class="sub_title" for="name">Nombre </label>
+                        <input placeholder="Ingresa el nombre" class="form_style" type="text"
+                            id="name" th:field="*{nombre}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="cedula">Cedula </label>
+                        <input placeholder="Ingresa la cedula" class="form_style" type="text" id="cedula"
+                            th:field="*{raza}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="especialidad">Especialidad </label>
+                        <input placeholder="Ingresa la especialidad" class="form_style" type="text" id="especialidad"
+                            th:field="*{raza}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="numAtenciones">Número de Atenciones</label>
+                        <input placeholder="Ingresa el numero de atenciones" class="form_style" type="number" id="numAtenciones"
+                            th:field="*{edad}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="correo">Correo</label>
+                        <input placeholder="Ingresa el correo" class="form_style"
+                        type="email" id="correo" th:field="*{enfermedad}">
+                    </div>
+                    <div class="form_group">
+                        <label class="sub_title" for="contrasena">Contraseña</label>
+                        <input placeholder="Ingresa una contraseña" class="form_style"
+                        type="password" id="contrasena" th:field="*{enfermedad}">
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn">GUARDAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>

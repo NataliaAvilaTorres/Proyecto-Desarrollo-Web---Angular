@@ -3,8 +3,6 @@
 <!-- Footer decorativo -->
 <img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
 
-<!-- Barra lateral de navegación -->
-<!-- Barra lateral de navegación -->
 <div class="sidebar close">
     <div class="logo">
         <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
@@ -72,14 +70,46 @@
     </ul>
 </div>
 
-
-<!-- Sección principal de contenido -->
 <div class="home-section">
- <!-- Ícono decorativo -->
- <img src="assets/images/General/Icono casita.png" alt="icono" class="iconoModificar" />
+    
+    <img src="assets/images/General/lista.png" alt="icono" class="iconoLista" />
 
-     <!-- Encabezado del panel -->
-     <header id="header">
-        <h1 class="form-title">ADMINISTRADOR</h1>
+    <header id="header">
+        <h1 class="form-title">GESTIÓN DE VETERINARIOS</h1>
     </header>
-</div>
+
+    <!-- Campo de búsqueda -->
+    <section class="buscar">
+        <div class="buscador-container">
+            <h1>BUSCADOR</h1>
+            <div class="buscador-input">
+                <input type="text" id="searchInput" placeholder="Buscar veterinario..." (keyup)="buscarVeterinarios($event)" />
+            </div>
+        </div>
+    </section>
+
+
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h1>MASCOTAS</h1>
+
+        </section>
+        <section class="table__body">
+            <table id="mascotasTable">
+                <thead>
+                    <tr>
+                        <th> ID</th>
+                        <th> Nombre</th>
+                        <th> Cedula</th>
+                        <th> Especialidad</th>
+                        <th> N° Atenciones</th>
+                        <th> Correo</th>
+                        <th> Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                </tbody>
+            </table>
+        </section>

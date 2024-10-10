@@ -12,6 +12,8 @@ import { PropietarioPanelComponent } from './propietario/propietario-panel/propi
 import { PropietarioMascotasComponent } from './propietario/propietario-mascotas/propietario-mascotas.component';
 import { AdministradorPanelComponent } from './administrador/administrador-panel/administrador-panel.component';
 import { AdminMascotaFormComponent } from './administrador/admin-mascota-form/admin-mascota-form.component';
+import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
+import { VeterinarioListComponent } from './veterinario/veterinario-list/veterinario-list.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent}, //http://localhost:4200/login
@@ -37,6 +39,8 @@ const routes: Routes = [
       { path: 'mascotas', component: MascotaListComponent } // http://localhost:4200/admin/mascotas
     ]
   },
+  {path: 'veterinarioForm/add', component: VeterinarioFormComponent}, //http://localhost:4200/veterinarioForm/add
+  {path: 'veterinarios', component: VeterinarioListComponent}, //http://localhost:4200/veterinarios
 ];
 
 @NgModule({

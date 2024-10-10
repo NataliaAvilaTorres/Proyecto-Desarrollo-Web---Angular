@@ -9,12 +9,13 @@
     /* Cambia a 'fixed' para mantener el título en una posición fija */
     top: 5px;
     /* Ajusta la posición vertical desde la parte superior de la ventana */
-    left: calc(80% - 300px);
+    left: calc(77% - 300px);
     /* Ajusta la posición horizontal, en este caso para que quede a la derecha */
     /* Puedes ajustar 'left' según tus necesidades */
     z-index: 20;
     /* Asegura que el título esté por encima de otros elementos */
 }
+
 
 /* From Uiverse.io by mi-series */
 .container {
@@ -32,15 +33,14 @@
     /* Ajusta la posición vertical del elemento */
     left: 36%;
     /* Ajusta la posición horizontal del elemento */
-    transform: translate(-50%,
-            -50%);
+    transform: translate(-50%, -50%);
     /* Centra el elemento respecto a su posición top/left */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #dcf2f1;
-    height: 620px;
+    background-color: #DCF2F1;
+    height: 700px;
     width: 450px;
     border: 2px solid #264143;
     border-radius: 20px;
@@ -48,6 +48,7 @@
     z-index: 20;
     /* Asegura que el elemento esté por encima del contenido y el sidebar */
 }
+
 
 .title {
     color: #264143;
@@ -90,14 +91,14 @@
     margin: 25px 0px;
     width: 290px;
     font-size: 15px;
-    background: #7fc7d9;
+    background: #7FC7D9;
     border-radius: 10px;
     font-weight: 800;
     box-shadow: 3px 3px 0px 0px #365486;
 }
 
 .btn:hover {
-    opacity: 0.9;
+    opacity: .9;
 }
 
 .link {
@@ -148,13 +149,13 @@
 .iconoEdit {
     position: fixed;
     /* Posiciona la imagen de manera absoluta */
-    top: 280px;
+    top: 230px;
     /* Ajusta según donde quieras que se muestre */
-    left: 1050px;
+    left: 1100px;
     /* Ajusta según donde quieras que se muestre */
     z-index: 20;
     /* Asegura que la imagen esté por encima de la barra decorativa */
-    width: 800px;
+    width: 560px;
     /* Ajusta el tamaño según sea necesario */
     height: auto;
     /* Mantén la proporción de la imagen */
@@ -167,7 +168,7 @@
     left: 0;
     height: 100%;
     width: 260px;
-    background-color: #0f1035;
+    background-color: #0F1035;
     z-index: 100;
     /* Asegura que el sidebar esté encima del contenido */
     transition: all 0.5s ease;
@@ -325,7 +326,7 @@
 }
 
 .sidebar .nav-list li .sub-menu a {
-    color: #dcf2f1;
+    color: #DCF2F1;
     font-size: 15px;
     padding: 5px 0;
     white-space: nowrap;

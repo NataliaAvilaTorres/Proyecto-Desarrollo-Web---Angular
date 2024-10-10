@@ -14,6 +14,6 @@ export class AppComponent {
   // Función para determinar si se deben mostrar el header y footer
   showHeaderAndFooter(): boolean {
     const currentUrl = this.router.url;
-    return !currentUrl.includes('/mascotas') && !currentUrl.includes('/mascota/detail') && !currentUrl.includes('/mascotaForm/update') && !currentUrl.includes('/mascotaForm/add') && !currentUrl.includes('/login') && !currentUrl.includes('/veterinarioPanel') && !currentUrl.includes('/propietarioForm/add') && !currentUrl.includes('/propietarioForm/update') && !currentUrl.includes('/propietarios') && !currentUrl.includes('/propietario/detail') && !currentUrl.includes('/propietarioPanel') && !currentUrl.includes('/propietarioMascotas') && !currentUrl.includes('/adminPanel') && !currentUrl.includes('/adminPanel/mascotaForm/add');
+    return !currentUrl.includes('/mascotas') && !currentUrl.includes('/mascota/detail') && !currentUrl.includes('/mascotaForm/update') && !currentUrl.includes('/mascotaForm/add') && !currentUrl.includes('/login') && !currentUrl.includes('/veterinarioPanel') && !currentUrl.includes('/propietarioForm/add') && !currentUrl.includes('/propietarioForm/update') && !currentUrl.includes('/propietarios') && !currentUrl.includes('/propietario/detail') && !currentUrl.includes('/propietarioPanel') && !currentUrl.includes('/propietarioMascotas') && !currentUrl.includes('/adminPanel') && !currentUrl.includes('/adminPanel/mascotaForm/add') && !currentUrl.includes('veterinarioForm/add') && !currentUrl.includes('veterinarios');
   }
 }
