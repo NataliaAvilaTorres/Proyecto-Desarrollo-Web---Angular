@@ -37,6 +37,13 @@ export class VeterinarioListComponent {
     });
   }
 
+  // Editar veterinario
+  editarVeterinario(veterinario: Veterinario) {
+    console.log('Editing veterinario with ID:', veterinario.id); // Verificar el ID
+    this.router.navigate(['/veterinarioForm/update', veterinario.id])
+      .catch(err => console.error('Error al navegar:', err));
+  }
+
   
 
   // Obtener todos los veterinarios en el buscador

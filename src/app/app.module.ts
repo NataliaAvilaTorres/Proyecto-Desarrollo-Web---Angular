@@ -25,6 +25,7 @@ import { AdministradorPanelComponent } from './administrador/administrador-panel
 import { AdminMascotaFormComponent } from './administrador/admin-mascota-form/admin-mascota-form.component';
 import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
 import { VeterinarioListComponent } from './veterinario/veterinario-list/veterinario-list.component';
+import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { VeterinarioListComponent } from './veterinario/veterinario-list/veterin
     AdministradorPanelComponent,
     AdminMascotaFormComponent,
     VeterinarioFormComponent,
-    VeterinarioListComponent,  ],
+    VeterinarioListComponent,
+    VeterinarioDetailComponent,  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
