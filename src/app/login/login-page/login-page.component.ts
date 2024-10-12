@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdministradorService } from 'src/app/service/administrador.service';
 import { PropietarioService } from 'src/app/service/propietario.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 
@@ -17,7 +18,8 @@ export class LoginPageComponent {
   constructor(
     private router: Router,
     private propietarioService: PropietarioService,
-    private veterinarioService: VeterinarioService
+    private veterinarioService: VeterinarioService,
+    private administradorService: AdministradorService
   ) { }
 
   // Función para iniciar sesión ayuda a guardar el correo y contraseña en el localStorage
@@ -42,7 +44,16 @@ export class LoginPageComponent {
           alert('Credenciales inválidas para veterinario');
         }
       });
-    } else {
+    } else if (this.role === 'admin') {
+      this.administradorService.findAll().subscribe(administradores => {
+        const administrador = administradores.find(v => v.correo === this.correo && v.contrasena === this.contrasena);
+        if (administrador) {
+          this.router.navigate(['/adminPanel']);
+        } else {
+          alert('Credenciales inválidas para administrador');
+        }
+      });
+    }else {
       alert('Por favor, seleccione un rol');
     }
   }

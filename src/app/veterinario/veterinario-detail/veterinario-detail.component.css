@@ -1,6 +1,6 @@
 /* Contenedor principal */
 .container {
-    margin: 140px 100px;
+    margin: 530px 100px 0 600px;
     padding: 20px;
     background: linear-gradient(135deg, #fff, #f9f9f9);
     border-radius: 25px;
@@ -27,12 +27,11 @@ h1.servicios {
 /* Contenedor de las tarjetas */
 .card {
     background: linear-gradient(135deg, #f3f3f3, #ffffff);
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: 25px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-align: center;
-
 }
 
 h5 {
@@ -146,6 +145,7 @@ td {
     }
 }
 
+
 .barra-decorativa {
     position: absolute;
     top: 0;
@@ -189,15 +189,15 @@ td {
 .iconoEdit {
     position: fixed;
     /* Posiciona la imagen de manera absoluta */
-    top: 250px;
+    top: 150px;
     /* Ajusta según donde quieras que se muestre */
-    left: 1100px;
+    left: 130px;
     /* Ajusta según donde quieras que se muestre */
     z-index: 20;
     /* Asegura que la imagen esté por encima de la barra decorativa */
-    width: 560px;
+    width: 1050px;
     /* Ajusta el tamaño según sea necesario */
-    height: auto;
+    height: 700px;
     /* Mantén la proporción de la imagen */
 }
 
