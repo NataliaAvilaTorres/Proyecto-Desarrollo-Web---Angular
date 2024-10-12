@@ -37,6 +37,10 @@ export class VeterinarioListComponent {
     });
   }
 
+  mostrarVeterinario(veterinario: Veterinario) {
+    this.router.navigate(['/veterinario/detail', veterinario.id]); // Este funciona
+  }
+
   // Editar veterinario
   editarVeterinario(veterinario: Veterinario) {
     console.log('Editing veterinario with ID:', veterinario.id); // Verificar el ID

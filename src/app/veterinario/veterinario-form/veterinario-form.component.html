@@ -94,43 +94,43 @@
     <img src="assets/images/General/addVet.png" alt="icono" class="iconoModificar" />
 
     <header id="header">
-        <h1 class="form-title">AGREGAR VETERINARIO</h1>
+        <h1 class="form-title">DATOS VETERINARIO</h1>
         <img src="assets/images/General/veterinario.png" alt="icono" class="iconoEdit" />
     </header>
     <main>
         <div class="container">
             <div class="form_area">
                 <p class="title">DATOS DEL VETERINARIO</p>
-                <form th:object="${mascota}" th:action="@{/pet/agregarMascota}" method="POST">
+                <form #veterinarioForm="ngForm" (ngSubmit)="updateVeterinario(veterinarioForm)">
                     <div class="form_group">
                         <label class="sub_title" for="name">Nombre </label>
                         <input placeholder="Ingresa el nombre" class="form_style" type="text"
-                            id="name" th:field="*{nombre}">
+                            id="name" [(ngModel)]="veterinario.nombre" name="nombre" required>
                     </div>
                     <div class="form_group">
                         <label class="sub_title" for="cedula">Cedula </label>
                         <input placeholder="Ingresa la cedula" class="form_style" type="text" id="cedula"
-                            th:field="*{raza}">
+                        [(ngModel)]="veterinario.cedula" name="cedula" required>
                     </div>
                     <div class="form_group">
                         <label class="sub_title" for="especialidad">Especialidad </label>
                         <input placeholder="Ingresa la especialidad" class="form_style" type="text" id="especialidad"
-                            th:field="*{raza}">
+                        [(ngModel)]="veterinario.especialidad" name="especialidad" required>
                     </div>
                     <div class="form_group">
                         <label class="sub_title" for="numAtenciones">Número de Atenciones</label>
                         <input placeholder="Ingresa el numero de atenciones" class="form_style" type="number" id="numAtenciones"
-                            th:field="*{edad}">
+                        [(ngModel)]="veterinario.numAtenciones" name="numAtenciones" required>
                     </div>
                     <div class="form_group">
                         <label class="sub_title" for="correo">Correo</label>
                         <input placeholder="Ingresa el correo" class="form_style"
-                        type="email" id="correo" th:field="*{enfermedad}">
+                        type="email" id="correo" [(ngModel)]="veterinario.correo" name="correo" required>
                     </div>
                     <div class="form_group">
                         <label class="sub_title" for="contrasena">Contraseña</label>
                         <input placeholder="Ingresa una contraseña" class="form_style"
-                        type="password" id="contrasena" th:field="*{enfermedad}">
+                        type="password" id="contrasena" [(ngModel)]="veterinario.contrasena" name="contrasena" required>
                     </div>
 
                     <div>

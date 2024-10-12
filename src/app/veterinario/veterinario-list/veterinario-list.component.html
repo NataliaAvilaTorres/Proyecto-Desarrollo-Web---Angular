@@ -108,8 +108,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                   <tr *ngFor="let veterinario of veterinarioList">
+                    <td>{{veterinario.id}}</td>
+                    <td>{{veterinario.nombre}}</td>
+                    <td>{{veterinario.cedula}}</td>
+                    <td>{{veterinario.especialidad}}</td>
+                    <td>{{veterinario.numAtenciones}}</td>
+                    <td>{{veterinario.correo}}</td>
+                    <td>
+                        <button class="btn-detalles" (click)="mostrarVeterinario(veterinario)">Ver Detalles</button>
+                        <button class="btn-editar" (click)="editarVeterinario(veterinario)">Editar</button>
+                        <button class="btn-eliminar" (click)="eliminarVeterinario(veterinario)">Eliminar</button>
+                    </td>
 
-
+                   </tr> 
                 </tbody>
             </table>
         </section>
