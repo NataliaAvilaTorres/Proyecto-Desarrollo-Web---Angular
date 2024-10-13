@@ -59,11 +59,11 @@
 }
 
 .iconoModificar {
-    position: fixed;
+    position: absolute;
     /* Posiciona la imagen de manera absoluta */
-    top: -80px;
+    top: -290px;
     /* Ajusta según donde quieras que se muestre */
-    left: 750px;
+    left: 400px;
     /* Ajusta según donde quieras que se muestre */
     z-index: 20;
     /* Asegura que la imagen esté por encima de la barra decorativa */
