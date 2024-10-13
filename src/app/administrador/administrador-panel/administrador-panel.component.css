@@ -522,9 +522,10 @@ i.fa-solid fa-right-from-bracket
 
 
 .form-title {
-  text-align: center;
-  font-size: 2rem;
-  margin: 20px 0;
+  position: absolute;
+  font-size: 3rem;
+  margin-top: -170px;
+  margin-left: 120px;
 }
 
 /* Ajuste del Sidebar */
