@@ -527,88 +527,218 @@ i.fa-solid fa-right-from-bracket
   margin: 20px 0;
 }
 
-/* Contenedor general del Dashboard */
-.dashboard-container {
-  padding: 50px;
-  background-color: #f0f4f8;
-  border-radius: 15px;
-  max-width: 1200px;
-  margin: 80px auto; /* Centra el dashboard horizontal y verticalmente */
-  margin-top: 330px; /* Añade más espacio superior */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Ajuste del Sidebar */
+.sidebar {
+  background-color: #0f1035;
+  width: 260px;
+  height: 100%;
+  position: fixed;
+  transition: width 0.5s;
 }
 
-/* Título del Dashboard */
-.dashboard-title {
-  text-align: center;
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  color: #0f1035;
+.sidebar.close {
+  width: 80px;
 }
 
-/* Tarjetas de KPIs */
-.kpi-cards {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 30px; /* Aumenta el espacio entre tarjetas */
-  margin-bottom: 50px;
-}
-
-.kpi-card {
-  width: 300px;
-  padding: 25px;
-  text-align: center;
-  background: linear-gradient(135deg, #42a5f5, #66bb6a);
+/* Estilos para el Tooltip */
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 8px 12px;
+  border-radius: 10px;
   color: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
+
+.nav-list li:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 1400px;
+    margin: 80px auto;
+    margin-top: 400px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* KPI Cards Layout */
+.kpi-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+    justify-content: center; /* Asegura que el contenido esté centrado */
+}
+/* Dashboard Title */
+.dashboard-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    color: #333;
+}
+
+/* KPI Card Styling */
+.kpi-card {
+    background-color: #f5f7fa;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.kpi-card canvas {
+  max-width: 300px;
+  max-height: 300px;
+  margin: 0 auto;
+}
+
+/* Asegura que el contenedor tenga un tamaño fijo */
+.chart-container {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+
 
 .kpi-card:hover {
-  transform: scale(1.1); /* Aumenta la tarjeta al pasar el mouse */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* Títulos de las secciones */
-.section-title {
+.kpi-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #2e3a59;
+}
+
+.kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.kpi-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-left: auto;
+  margin-left: 10px;
+  line-height: 1;
+}
+
+.meta-info {
+    font-size: 1rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+/* Progress Bar */
+.progress-container {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    background-color: #4caf50;
+    height: 100%;
+}
+
+/* Pictogram Layout */
+.pictogram {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pictogram-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pictogram-icons i {
+    margin-right: 5px;
+    color: #42A5F5;
+}
+
+.pill-legend {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+/* Ventas y Ganancias Card */
+.ventas-ganancias-card {
+  display: flex;
+  padding: 10px 20px; /* Reduce el espacio interno */
+  justify-content: space-between;
+  align-items: center;
+}
+.ventas-info, .ganancias-info {
   text-align: center;
-  margin-top: 40px;
-  font-size: 24px;
-  color: #0f1035;
+}
+.ventas-valor, .ganancias-valor {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4a90e2;
+  margin: 15px 15px; /* Reduce el espacio superior e inferior */
 }
 
-/* Tabla de Medicamentos */
+
+.ventas-info h1, .ganancias-info h1 {
+    font-size: 3rem;
+    color: #4a90e2;
+}
+
+/* Medicamentos Table */
 .medicamentos-table {
   width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .medicamentos-table th, .medicamentos-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
 }
 
 .medicamentos-table th {
-  background-color: #42a5f5;
-  color: white;
+    background-color: #42A5F5;
+    color: white;
 }
 
+
+.medicamentos-table tr:nth-child(even) {
+    background-color: #f7f7f7; /* Color claro para filas pares */
+}
+
+.medicamentos-table tr:nth-child(odd) {
+    background-color: #fff; /* Blanco para filas impares */
+}
 .medicamentos-table tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* Contenedor del gráfico */
-.chart-container {
-  margin-top: 40px;
-  width: 100%;
-  height: 400px;
+    background-color: #f0f0f0; /* Hover consistente */
 }

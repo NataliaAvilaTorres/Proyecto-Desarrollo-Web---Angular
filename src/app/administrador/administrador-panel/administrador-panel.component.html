@@ -84,76 +84,103 @@
   </header>
 
   <!-- Contenedor del Dashboard -->
-  <div class="dashboard-container">
-  <h2 class="dashboard-title">Dashboard KPIs</h2>
+<div class="dashboard-container">
+    <h2 class="dashboard-title">Dashboard KPIs</h2>
 
-  <!-- Tarjetas para KPIs -->
-  <div class="kpi-cards">
-    <div class="kpi-card">
-      <h3>Total Tratamientos</h3>
-      <p>{{ kpis.totalTratamientos }}</p>
+    <div class="kpi-cards">
+
+        <!-- KPI 1: Total de Tratamientos -->
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <h3>Total de Tratamientos</h3>
+            <p class="kpi-number">{{ kpis.totalTratamientos }}</p>
+          </div>
+          <p class="meta-info">Meta: 100 tratamientos</p>
+          <div class="progress-container">
+            <div class="progress-bar" [style.width.%]="(kpis.totalTratamientos / 100) * 100"></div>
+          </div>
+        </div>
+
+        <!-- KPI 5: Tratamientos por Medicamento -->
+        <div class="kpi-card full-width">
+            <h3>Tratamientos por Medicamento</h3>
+            <table class="medicamentos-table">
+                <thead>
+                    <tr>
+                        <th>Medicamento</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let med of kpis.tratamientosPorMedicamento">
+                        <td>{{ med[0] }}</td>
+                        <td>{{ med[1] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- KPI 6: Top 3 Tratamientos Más Vendidos (Pictogram) -->
+        <div class="kpi-card">
+            <h3>Top 3 Tratamientos Más Vendidos</h3>
+            <div class="pictogram">
+                <div *ngFor="let t of kpis.topTratamientos" class="pictogram-item">
+                    <span>{{ t[0] }}</span>
+                    <div class="pictogram-icons">
+                        <i class="fa-solid fa-capsules" *ngFor="let i of [].constructor(t[1])"></i>
+                    </div>
+                </div>
+            </div>  
+            <p class="pill-legend">
+                <i class="fa-solid fa-capsules"></i> representa un tratamiento
+            </p>
+        </div>
+
+        <!-- KPI 3: Veterinarios Activos/Inactivos -->
+        <div class="kpi-card">
+            <h3>Veterinarios Activos / Inactivos</h3>
+            <div class="progress-container">
+                <div class="progress-bar" [style.width.%]="(kpis.veterinariosActivos / 
+                (kpis.veterinariosActivos + kpis.veterinariosInactivos)) * 100"></div>
+            </div>
+            <p>{{ kpis.veterinariosActivos }} Activos / {{ kpis.veterinariosInactivos }} Inactivos</p>
+        </div>
+
+        <!-- KPI 2: Mascotas Activas vs Totales (Pie Chart) -->
+        <div class="kpi-card">
+          <h3>Mascotas Activas vs. Totales</h3>
+          <div class="chart-container">
+            <canvas 
+              baseChart 
+              [data]="pieChartDataMascotas" 
+              [options]="pieChartOptionsMascotas"
+              [type]="'pie'">
+            </canvas>
+          </div>
+          <p class="meta-info">Total de Mascotas: {{ kpis.totalMascotas }}</p>
+        </div>
+
+
+
+
+        <!-- KPI 4: Ventas y Ganancias -->
+        <div class="kpi-card ventas-ganancias-card">
+          <div class="ventas-info">
+            <h3>Ventas Totales</h3>
+            <p class="ventas-valor">${{ kpis.ventasTotales }}</p>
+          </div>
+          <div class="ganancias-info">
+            <h3>Ganancias Totales</h3>
+            <p class="ganancias-valor">${{ kpis.gananciasTotales }}</p>
+          </div>
+        </div>
+
+
+        
     </div>
-
-    <div class="kpi-card">
-      <h3>Veterinarios Activos</h3>
-      <p>{{ kpis.veterinariosActivos }}</p>
-    </div>
-
-    <div class="kpi-card">
-      <h3>Veterinarios Inactivos</h3>
-      <p>{{ kpis.veterinariosInactivos }}</p>
-    </div>
-
-    <div class="kpi-card">
-      <h3>Total de Mascotas</h3>
-      <p>{{ kpis.totalMascotas }}</p>
-    </div>
-
-    <div class="kpi-card">
-      <h3>Mascotas Activas</h3>
-      <p>{{ kpis.mascotasActivas }}</p>
-    </div>
-
-    <div class="kpi-card">
-      <h3>Ventas Totales</h3>
-      <p>${{ kpis.ventasTotales }}</p>
-    </div>
-
-    <div class="kpi-card">
-      <h3>Ganancias Totales</h3>
-      <p>${{ kpis.gananciasTotales }}</p>
-    </div>
-  </div>
-
-  <!-- Tabla de tratamientos por medicamento -->
-  <h3 class="section-title">Tratamientos por Medicamento (Último Mes)</h3>
-  <table class="medicamentos-table">
-    <thead>
-      <tr>
-        <th>Medicamento</th>
-        <th>Cantidad</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let med of kpis.tratamientosPorMedicamento">
-        <td>{{ med[0] }}</td>
-        <td>{{ med[1] }}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- Gráfico de barras -->
-  <h3 class="section-title">Top 3 Tratamientos Más Vendidos</h3>
-    <div class="chart-container">
-      <canvas baseChart
-        [data]="barChartData"
-        [labels]="barChartLabels"
-        [options]="barChartOptions"
-        [type]="'bar'">
-      </canvas>
-    </div>
-
 </div>
+
+
 
 
 </div>
