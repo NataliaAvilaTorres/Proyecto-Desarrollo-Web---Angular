@@ -123,6 +123,14 @@
                         [(ngModel)]="veterinario.numAtenciones" name="numAtenciones" required>
                     </div>
                     <div class="form_group">
+                        <label class="sub_title" for="status">Estado</label>
+                        <select class="form_style" id="status" [(ngModel)]="veterinario.estado" name="estado" required>
+                            <option value="" disabled selected>Seleccione el estado del veterinario</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="form_group">
                         <label class="sub_title" for="correo">Correo</label>
                         <input placeholder="Ingresa el correo" class="form_style"
                         type="email" id="correo" [(ngModel)]="veterinario.correo" name="correo" required>

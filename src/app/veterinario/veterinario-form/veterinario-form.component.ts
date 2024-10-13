@@ -18,7 +18,8 @@ export class VeterinarioFormComponent {
     especialidad: '',
     numAtenciones: 0,
     correo: '',
-    contrasena: ''
+    contrasena: '',
+    estado: ''
   };
 
   isEditing: boolean = false;

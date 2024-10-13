@@ -6,4 +6,5 @@ export interface Veterinario {
     numAtenciones: number;
     contrasena: string;
     correo: string;
+    estado: string;
 }
