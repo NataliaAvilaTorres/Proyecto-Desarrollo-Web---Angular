@@ -75,11 +75,85 @@
 
 <!-- Sección principal de contenido -->
 <div class="home-section">
- <!-- Ícono decorativo -->
- <img src="assets/images/General/Icono casita.png" alt="icono" class="iconoModificar" />
+  <!-- Ícono decorativo -->
+  <img src="assets/images/General/Icono casita.png" alt="icono" class="iconoModificar" />
 
-     <!-- Encabezado del panel -->
-     <header id="header">
-        <h1 class="form-title">ADMINISTRADOR</h1>
-    </header>
+  <!-- Encabezado -->
+  <header id="header">
+    <h1 class="form-title">ADMINISTRADOR</h1>
+  </header>
+
+  <!-- Contenedor del Dashboard -->
+  <div class="dashboard-container">
+  <h2 class="dashboard-title">Dashboard KPIs</h2>
+
+  <!-- Tarjetas para KPIs -->
+  <div class="kpi-cards">
+    <div class="kpi-card">
+      <h3>Total Tratamientos</h3>
+      <p>{{ kpis.totalTratamientos }}</p>
+    </div>
+
+    <div class="kpi-card">
+      <h3>Veterinarios Activos</h3>
+      <p>{{ kpis.veterinariosActivos }}</p>
+    </div>
+
+    <div class="kpi-card">
+      <h3>Veterinarios Inactivos</h3>
+      <p>{{ kpis.veterinariosInactivos }}</p>
+    </div>
+
+    <div class="kpi-card">
+      <h3>Total de Mascotas</h3>
+      <p>{{ kpis.totalMascotas }}</p>
+    </div>
+
+    <div class="kpi-card">
+      <h3>Mascotas Activas</h3>
+      <p>{{ kpis.mascotasActivas }}</p>
+    </div>
+
+    <div class="kpi-card">
+      <h3>Ventas Totales</h3>
+      <p>${{ kpis.ventasTotales }}</p>
+    </div>
+
+    <div class="kpi-card">
+      <h3>Ganancias Totales</h3>
+      <p>${{ kpis.gananciasTotales }}</p>
+    </div>
+  </div>
+
+  <!-- Tabla de tratamientos por medicamento -->
+  <h3 class="section-title">Tratamientos por Medicamento (Último Mes)</h3>
+  <table class="medicamentos-table">
+    <thead>
+      <tr>
+        <th>Medicamento</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let med of kpis.tratamientosPorMedicamento">
+        <td>{{ med[0] }}</td>
+        <td>{{ med[1] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Gráfico de barras -->
+  <h3 class="section-title">Top 3 Tratamientos Más Vendidos</h3>
+    <div class="chart-container">
+      <canvas baseChart
+        [data]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [type]="'bar'">
+      </canvas>
+    </div>
+
+</div>
+
+
 </div>

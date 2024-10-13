@@ -36,4 +36,8 @@ export class AdministradorService {
     deleteAdministrador(id: number): Observable<void> {
       return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
+
+    getDashboardKPIs(): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/dashboard`);
+    }
 }

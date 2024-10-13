@@ -519,3 +519,96 @@ i.fa-solid fa-right-from-bracket
 {
     margin-top: 100px;
 }
+
+
+.form-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+/* Contenedor general del Dashboard */
+.dashboard-container {
+  padding: 50px;
+  background-color: #f0f4f8;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 80px auto; /* Centra el dashboard horizontal y verticalmente */
+  margin-top: 330px; /* Añade más espacio superior */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del Dashboard */
+.dashboard-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #0f1035;
+}
+
+/* Tarjetas de KPIs */
+.kpi-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px; /* Aumenta el espacio entre tarjetas */
+  margin-bottom: 50px;
+}
+
+.kpi-card {
+  width: 300px;
+  padding: 25px;
+  text-align: center;
+  background: linear-gradient(135deg, #42a5f5, #66bb6a);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kpi-card:hover {
+  transform: scale(1.1); /* Aumenta la tarjeta al pasar el mouse */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+/* Títulos de las secciones */
+.section-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 24px;
+  color: #0f1035;
+}
+
+/* Tabla de Medicamentos */
+.medicamentos-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.medicamentos-table th, .medicamentos-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.medicamentos-table th {
+  background-color: #42a5f5;
+  color: white;
+}
+
+.medicamentos-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Contenedor del gráfico */
+.chart-container {
+  margin-top: 40px;
+  width: 100%;
+  height: 400px;
+}
