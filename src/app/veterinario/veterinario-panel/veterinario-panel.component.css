@@ -63,7 +63,7 @@
     /* Posiciona la imagen de manera absoluta */
     top: -80px;
     /* Ajusta según donde quieras que se muestre */
-    left: 750px;
+    left: 740px;
     /* Ajusta según donde quieras que se muestre */
     z-index: 20;
     /* Asegura que la imagen esté por encima de la barra decorativa */
@@ -78,7 +78,7 @@
     /* Posiciona la imagen de manera absoluta */
     top: 100px;
     /* Ajusta según donde quieras que se muestre */
-    left: 100px;
+    left: 90px;
     /* Ajusta según donde quieras que se muestre */
     z-index: 20;
     /* Asegura que la imagen esté por encima de la barra decorativa */
@@ -528,7 +528,7 @@ i.fa-solid fa-right-from-bracket
     color: #365486;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0;
-    margin-right: -20px;
+    margin-right: -10px;
     margin-top: 500px;
   }
 
@@ -540,5 +540,4 @@ i.fa-solid fa-right-from-bracket
     text-align: right;
     margin-left: 750px;
     max-width: 83%;
-
   }
