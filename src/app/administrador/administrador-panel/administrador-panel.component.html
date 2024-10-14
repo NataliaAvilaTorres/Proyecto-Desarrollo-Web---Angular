@@ -139,12 +139,31 @@
         <!-- KPI 3: Veterinarios Activos/Inactivos -->
         <div class="kpi-card">
             <h3>Veterinarios Activos / Inactivos</h3>
-            <div class="progress-container">
-                <div class="progress-bar" [style.width.%]="(kpis.veterinariosActivos / 
-                (kpis.veterinariosActivos + kpis.veterinariosInactivos)) * 100"></div>
+        
+            <div class="progress-container-stacked">
+            <div
+                class="progress-bar-active"
+                [style.width.%]="(kpis.veterinariosActivos / (kpis.veterinariosActivos + kpis.veterinariosInactivos)) * 100">
             </div>
-            <p>{{ kpis.veterinariosActivos }} Activos / {{ kpis.veterinariosInactivos }} Inactivos</p>
+            <div
+                class="progress-bar-inactive"
+                [style.width.%]="(kpis.veterinariosInactivos / (kpis.veterinariosActivos + kpis.veterinariosInactivos)) * 100">
+            </div>
+            </div>
+        
+            <!-- Información con colores y números en línea -->
+            <p class="meta-info legend-inline-text">
+            <span class="legend-inline">
+                <i class="legend-icon active"></i> {{ kpis.veterinariosActivos }} Activos
+            </span> /
+            <span class="legend-inline">
+                <i class="legend-icon inactive"></i> {{ kpis.veterinariosInactivos }} Inactivos
+            </span>
+            </p>
         </div>
+  
+  
+  
 
         <!-- KPI 2: Mascotas Activas vs Totales (Pie Chart) -->
         <div class="kpi-card">

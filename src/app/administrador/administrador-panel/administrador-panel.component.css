@@ -746,3 +746,66 @@ i.fa-solid fa-right-from-bracket
 .medicamentos-table tr:hover {
     background-color: #f0f0f0; /* Hover consistente */
 }
+
+/* Estilo del contenedor de la barra apilada */
+.progress-container-stacked {
+    display: flex;
+    height: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    margin-top: 10px;
+    position: relative;
+  }
+  
+  /* Barra de progreso para veterinarios activos */
+  .progress-bar-active {
+    background-color: #4caf50;
+    height: 100%;
+    position: relative;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  /* Barra de progreso para veterinarios inactivos */
+  .progress-bar-inactive {
+    background-color: #ef5350;
+    height: 100%;
+    position: relative;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  /* Leyenda en línea junto con el texto */
+  .legend-inline {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el ícono y el texto */
+    margin: 5px 0;
+  }
+  
+  /* Estilo del ícono de la leyenda (círculo) */
+  .legend-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  /* Color para veterinarios activos */
+  .legend-icon.active {
+    background-color: #4caf50;
+  }
+  
+  /* Color para veterinarios inactivos */
+  .legend-icon.inactive {
+    background-color: #ef5350;
+  }
+
+  /* Asegura que la meta-info y su contenido se mantengan en una línea */
+.legend-inline-text {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Alinea verticalmente */
+    gap: 10px; /* Espacio entre los elementos */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  }
+  

@@ -27,8 +27,12 @@ export class AdministradorPanelComponent implements OnInit, AfterViewInit {
     labels: ['Activas', 'Inactivas'],
     datasets: [
       {
-        data: [0, 0], // Placeholder inicial hasta que se carguen los datos reales
-        backgroundColor: ['#42A5F5', '#EF5350']
+        data: [0, 0], // Placeholder inicial
+        backgroundColor: ['#42A5F5', '#EF5350'], // Colores base
+        hoverBackgroundColor: ['#64B5F6', '#FF7043'], // Colores de hover
+        borderColor: ['#42A5F5', '#EF5350'], // Borde base
+        hoverBorderColor: ['#64B5F6', '#FF7043'], // Borde en hover
+        borderWidth: 2 // Ancho del borde
       }
     ]
   };
@@ -49,7 +53,11 @@ export class AdministradorPanelComponent implements OnInit, AfterViewInit {
     datasets: [
       {
         data: [5, 3], // Valores predeterminados
-        backgroundColor: ['#66BB6A', '#EF5350']
+        backgroundColor: ['#66BB6A', '#EF5350'], // Colores base
+        hoverBackgroundColor: ['#81C784', '#FF6F61'], // Colores de hover
+        borderColor: ['#66BB6A', '#EF5350'], // Borde base
+        hoverBorderColor: ['#81C784', '#FF6F61'], // Borde en hover
+        borderWidth: 2 // Ancho del borde
       }
     ]
   };
