@@ -61,9 +61,9 @@
 .iconoModificar {
     position: absolute;
     /* Posiciona la imagen de manera absoluta */
-    top: -320px;
+    top: -330px;
     /* Ajusta según donde quieras que se muestre */
-    left: 680px;
+    left: 560px;
     /* Ajusta según donde quieras que se muestre */
     z-index: 20;
     /* Asegura que la imagen esté por encima de la barra decorativa */
@@ -524,8 +524,8 @@ i.fa-solid fa-right-from-bracket
 .form-title {
   position: absolute;
   font-size: 3rem;
-  margin-top: -200px;
-  margin-left: 10px;
+  margin-top: -215px;
+  margin-left: 50px;
 }
 
 /* Ajuste del Sidebar */
