@@ -187,7 +187,8 @@ export class MascotaFormComponent implements OnInit {
         this.mascotaService.addMascota(this.mascota).subscribe(
           data => {
             console.log('Mascota added successfully:', data);
-            this.router.navigate(['/mascotas']);
+            alert('Mascota añadida correctamente'); // Mostrar mensaje en vez de redirigir
+            form.reset(); // Restablecer el formulario
           },
           error => {
             console.error('Error adding mascota', error);
