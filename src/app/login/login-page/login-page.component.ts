@@ -39,6 +39,9 @@ export class LoginPageComponent {
       this.veterinarioService.findAll().subscribe(veterinarios => {
         const veterinario = veterinarios.find(v => v.correo === this.correo && v.contrasena === this.contrasena);
         if (veterinario) {
+        // Guardar el correo en el localStorage
+        localStorage.setItem('currentUserEmail', this.correo);
+        localStorage.setItem('currentVeterinario', JSON.stringify(veterinario)); // Guardar el veterinario completo
           this.router.navigate(['/veterinarioPanel']);
         } else {
           alert('Credenciales inválidas para veterinario');

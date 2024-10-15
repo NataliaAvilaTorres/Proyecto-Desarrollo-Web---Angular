@@ -78,7 +78,7 @@
     </header>
 
     <div class="form-container">
-        <form (ngSubmit)="onSubmit()">
+        <form #tratamientoForm="ngForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="mascota">Seleccione una mascota</label>
             <div class="search-container">
