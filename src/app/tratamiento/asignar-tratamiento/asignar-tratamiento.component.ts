@@ -38,7 +38,7 @@ export class AsignarTratamientoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadMascotas(); // Llamar al método que carga las mascotas}
+    this.loadMascotas(); // Llamar al método que carga las mascotas
     this.loadMedicamentos(); // Llamar al método que carga los medicamentos
   }
 
