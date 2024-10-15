@@ -78,7 +78,7 @@
     </header>
 
     <div class="form-container">
-        <form>
+        <form (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="mascota">Seleccione una mascota</label>
             <div class="search-container">
@@ -102,13 +102,22 @@
               <select id="mascota" [(ngModel)]="tratamiento.medicamento.id" name="mascota">
                 <option value="" disabled selected>Seleccione una medicamento</option>
                 <option *ngFor="let medicamento of medicamentos" [value]="medicamento.nombre">
-                  {{ medicamento.nombre }} 
+                  {{ medicamento.id }} - {{ medicamento.nombre }} 
                 </option>
               </select>
             </div>
           </div>
 
-          <button type="submit" class="btn-administrar">ADMINISTRAR</button>
+          <div class="form-group" *ngIf="tratamiento.medicamento.id">
+            <label for="cantidad">Unidades que administra</label>
+            <input type="number" id="cantidad" [(ngModel)]="cantidad" name="cantidad" min="1" (change)="verificarDisponibilidad()">
+          </div>
+      
+          <div *ngIf="errorMensaje" class="error-message">
+            {{ errorMensaje }}
+          </div>
+      
+          <button type="submit" class="btn-administrar" [disabled]="!cantidadValida">ADMINISTRAR</button>
         </form>
       </div>
 </div>
