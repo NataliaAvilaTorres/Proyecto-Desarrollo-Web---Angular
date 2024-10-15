@@ -30,8 +30,11 @@ export class TratamientoService {
 
   // Agregar un nuevo tratamiento
   addTratamiento(tratamiento: Tratamiento): Observable<Tratamiento> {
+    console.log('Creando tratamiento:', tratamiento); // Log del payload
+
     return this.http.post<Tratamiento>(`${this.apiUrl}/`, tratamiento);
   }
+
 
   // Eliminar un tratamiento
   deleteTratamiento(id: number): Observable<void> {

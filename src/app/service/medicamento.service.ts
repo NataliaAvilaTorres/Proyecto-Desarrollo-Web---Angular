@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Medicamento } from '../tratamiento/medicamento';
@@ -25,8 +25,22 @@ export class MedicamentoService {
   
     // Actualizar una medicamento
     updateMedicamento(medicamento: Medicamento): Observable<Medicamento> {
-      return this.http.put<Medicamento>(`${this.apiUrl}/${medicamento.id}`, medicamento);
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json' // Sin charset=UTF-8
+        })
+      };
+
+      console.log('Actualizando medicamento:', medicamento);
+
+      return this.http.put<Medicamento>(
+        `${this.apiUrl}/${medicamento.id}`,
+        medicamento,
+        httpOptions
+      );
     }
+
+
   
     // Agregar una nuevo medicamento
     addMedicamento(medicamento: Medicamento): Observable<Medicamento> {

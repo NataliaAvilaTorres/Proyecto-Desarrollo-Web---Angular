@@ -79,45 +79,55 @@
 
     <div class="form-container">
         <form #tratamientoForm="ngForm" (ngSubmit)="onSubmit()">
+          <!-- Selección de Mascota -->
           <div class="form-group">
             <label for="mascota">Seleccione una mascota</label>
             <div class="search-container">
               <select id="mascota" [(ngModel)]="tratamiento.mascota.id" name="mascota">
                 <option value="" disabled selected>Seleccione una mascota</option>
                 <option *ngFor="let mascota of mascotas" [value]="mascota.id">
-                  {{ mascota.id }} - {{ mascota.nombre }} <!-- Puedes mostrar otros detalles como el nombre -->
+                  {{ mascota.id }} - {{ mascota.nombre }}
                 </option>
               </select>
             </div>
           </div>
 
+          <!-- Selección de Fecha -->
           <div class="form-group">
             <label for="fecha">Fecha en que administra el medicamento</label>
-            <input type="date" id="fecha"  [(ngModel)]="tratamiento.fecha" required>
-        </div>
+            <input type="date" id="fecha" [(ngModel)]="tratamiento.fecha" name="fecha" required>
+          </div>
 
-        <div class="form-group">
-            <label for="mascota">Seleccione una medicamento</label>
+          <!-- Selección de Medicamento -->
+          <div class="form-group">
+            <label for="medicamento">Seleccione un medicamento</label>
             <div class="search-container">
-              <select id="medicamento" [(ngModel)]="tratamiento.medicamento.id" name="medicamento">
-                  <option value="" disabled selected>Seleccione un medicamento</option>
-                  <option *ngFor="let medicamento of medicamentos" [value]="medicamento.id">
-                    {{ medicamento.id }} - {{ medicamento.nombre }}
-                  </option>
-                </select>
+              <select id="medicamento" [(ngModel)]="tratamiento.medicamento.id" name="medicamento" (change)="onMedicamentoChange()">
+                <option value="" disabled selected>Seleccione un medicamento</option>
+                <option *ngFor="let medicamento of medicamentos" [value]="medicamento.id">
+                  {{ medicamento.id }} - {{ medicamento.nombre }}
+                </option>
+              </select>
             </div>
           </div>
 
+          <!-- Cantidad de Medicamento -->
           <div class="form-group" *ngIf="tratamiento.medicamento.id">
             <label for="cantidad">Unidades que administra</label>
             <input type="number" id="cantidad" [(ngModel)]="cantidad" name="cantidad" min="1" (change)="verificarDisponibilidad()">
           </div>
-      
+
+          <!-- Mensaje de Error -->
           <div *ngIf="errorMensaje" class="error-message">
             {{ errorMensaje }}
           </div>
-      
+
+          <!-- Botón de Envío -->
           <button type="submit" class="btn-administrar" [disabled]="!cantidadValida">ADMINISTRAR</button>
+
+          <button type="button" (click)="testFunction()">Probar Evento</button>
+
         </form>
+
       </div>
 </div>
