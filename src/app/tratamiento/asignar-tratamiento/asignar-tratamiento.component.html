@@ -99,12 +99,12 @@
         <div class="form-group">
             <label for="mascota">Seleccione una medicamento</label>
             <div class="search-container">
-              <select id="mascota" [(ngModel)]="tratamiento.medicamento.id" name="mascota">
-                <option value="" disabled selected>Seleccione una medicamento</option>
-                <option *ngFor="let medicamento of medicamentos" [value]="medicamento.nombre">
-                  {{ medicamento.id }} - {{ medicamento.nombre }} 
-                </option>
-              </select>
+              <select id="medicamento" [(ngModel)]="tratamiento.medicamento.id" name="medicamento">
+                  <option value="" disabled selected>Seleccione un medicamento</option>
+                  <option *ngFor="let medicamento of medicamentos" [value]="medicamento.id">
+                    {{ medicamento.id }} - {{ medicamento.nombre }}
+                  </option>
+                </select>
             </div>
           </div>
 

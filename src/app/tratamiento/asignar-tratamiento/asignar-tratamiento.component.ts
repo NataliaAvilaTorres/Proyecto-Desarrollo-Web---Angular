@@ -55,6 +55,7 @@ export class AsignarTratamientoComponent implements OnInit {
   loadMedicamentos(): void {
     this.medicamentoService.findAll().subscribe(
       (data) => {
+        console.log('Medicamentos cargados:', data); // Debug
         this.medicamentos = data;
       },
       (error) => {
@@ -70,9 +71,13 @@ export class AsignarTratamientoComponent implements OnInit {
   }
 
   verificarDisponibilidad(): void {
+    console.log('ID del medicamento seleccionado:', this.tratamiento.medicamento.id); // Debug
+
     if (this.tratamiento.medicamento.id && this.cantidad > 0) {
       this.medicamentoService.findMedicamentoById(this.tratamiento.medicamento.id).subscribe(
         (medicamento) => {
+          console.log('Medicamento obtenido:', medicamento); // Debug
+
           if (medicamento.unidadesDisponibles >= this.cantidad) {
             this.cantidadValida = true;
             this.errorMensaje = '';
@@ -91,6 +96,7 @@ export class AsignarTratamientoComponent implements OnInit {
       this.cantidadValida = false;
     }
   }
+
 
   onSubmit(): void {
     if (this.cantidadValida) {
