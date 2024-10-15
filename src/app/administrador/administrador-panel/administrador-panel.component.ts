@@ -91,6 +91,12 @@ export class AdministradorPanelComponent implements OnInit, AfterViewInit {
     scales: { y: { beginAtZero: true } }
   };
 
+  // Método para formatear números con separador de miles
+  formatNumber(value: number): string {
+    return new Intl.NumberFormat('es-ES', { minimumFractionDigits: 0 }).format(value);
+  }
+
+
   constructor(
     private administradorService: AdministradorService,
     private cdr: ChangeDetectorRef // Inyección de ChangeDetectorRef
