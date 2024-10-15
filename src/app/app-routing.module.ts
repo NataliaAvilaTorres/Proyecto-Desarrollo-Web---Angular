@@ -15,6 +15,7 @@ import { AdminMascotaFormComponent } from './administrador/admin-mascota-form/ad
 import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
 import { VeterinarioListComponent } from './veterinario/veterinario-list/veterinario-list.component';
 import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component';
+import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent}, //http://localhost:4200/login
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path: 'veterinarios', component: VeterinarioListComponent}, //http://localhost:4200/veterinarios
   {path: 'veterinarioForm/update/:id', component: VeterinarioFormComponent}, //http://localhost:4200/veterinarioForm/update/1
   {path: 'veterinario/detail/:id', component: VeterinarioDetailComponent}, //http://localhost:4200/veterinario/detail/1
+  {path: 'tratamiento/add', component: AsignarTratamientoComponent}, //http://localhost:4200/tratamiento/add
 ];
 
 @NgModule({

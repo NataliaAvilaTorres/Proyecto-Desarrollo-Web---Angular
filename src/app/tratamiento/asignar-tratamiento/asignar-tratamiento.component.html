@@ -1,0 +1,114 @@
+<img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
+<img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
+<div class="sidebar close">
+    <div class="logo">
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
+        <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-07.png" alt="Nombre Dogin" class="logo-name" />
+    </div>
+
+    <ul class="nav-list">
+        <!-- Cada enlace ahora lleva a la ruta correcta del servidor -->
+        <li>
+            <a href="/veterinarioPanel">
+                <i class="fab fa-microsoft"></i>
+                <span class="tooltip">Panel</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="/mascotaForm/add">
+                <i class="fa-solid fa-plus"></i>
+                <span class="tooltip">Agregar Mascota</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="/propietarioForm/add">
+                <i class="fa-solid fa-user-plus"></i>
+                <span class="tooltip">Agregar Propietario</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="/tratamiento">
+                <i class="fa-solid fa-suitcase-medical"></i>
+                <span class="tooltip">Asignar Tratamiento</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fas fa-bookmark"></i>
+                <span class="tooltip">Ver Historial</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="/mascotas">
+                <i class="fa-solid fa-shield-dog"></i>
+                <span class="tooltip">Listado de Mascotas</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li>
+            <a href="/propietarios">
+                <i class="fa-solid fa-list-ul"></i>
+                <span class="tooltip">Listado de Propietarios</span> <!-- Tooltip agregado -->
+            </a>
+        </li>
+
+        <li style="margin-top: 300px;">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+                <span class="tooltip">Cerrar Sesión</span> <!-- Tooltip agregado -->
+            </a>
+
+        </li>
+    </ul>
+
+</div>
+
+<div class="home-section">
+
+    <img src="assets/images/General/modificarIcono.png" alt="icono" class="iconoModificar" />
+
+    <header id="header">
+        <h1 class="form-title">ASIGNAR TRATAMIENTO</h1>
+        <img src="assets/images/General/tratamiento.png" alt="icono" class="iconoEdit" />
+    </header>
+
+    <div class="form-container">
+        <form>
+          <div class="form-group">
+            <label for="mascota">Seleccione una mascota</label>
+            <div class="search-container">
+              <select id="mascota" [(ngModel)]="tratamiento.mascota.id" name="mascota">
+                <option value="" disabled selected>Seleccione una mascota</option>
+                <option *ngFor="let mascota of mascotas" [value]="mascota.id">
+                  {{ mascota.id }} - {{ mascota.nombre }} <!-- Puedes mostrar otros detalles como el nombre -->
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fecha">Fecha en que administra el medicamento</label>
+            <input type="date" id="fecha"  [(ngModel)]="tratamiento.fecha" required>
+        </div>
+
+        <div class="form-group">
+            <label for="mascota">Seleccione una medicamento</label>
+            <div class="search-container">
+              <select id="mascota" [(ngModel)]="tratamiento.medicamento.id" name="mascota">
+                <option value="" disabled selected>Seleccione una medicamento</option>
+                <option *ngFor="let medicamento of medicamentos" [value]="medicamento.nombre">
+                  {{ medicamento.nombre }} 
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-administrar">ADMINISTRAR</button>
+        </form>
+      </div>
+</div>
