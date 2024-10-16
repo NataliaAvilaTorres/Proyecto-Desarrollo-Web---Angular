@@ -112,5 +112,4 @@ export class AsignarTratamientoComponent implements OnInit {
       console.error('Todos los campos son requeridos');
     }
   }  
-  
 }

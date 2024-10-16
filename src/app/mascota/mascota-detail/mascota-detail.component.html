@@ -2,24 +2,26 @@
 <div class="container">
     <div class="card">
         <ng-container *ngIf="mascota">
-        <div class="card-body">
-            <div class="details">
-                <h5 class="card-title">{{mascota.nombre}}</h5>
-                <p class="card-text">ID: <span>{{mascota.id}}</span></p>
-                <p class="card-text">Raza: <span>{{mascota.raza}}</span></p>
-                <p class="card-text">Edad: <span>{{mascota.edad}}</span></p>
-                <p class="card-text">Peso: <span>{{mascota.peso | number:'1.1-2'}}</span> kg</p>
-                <p class="card-text">Enfermedad: <span>{{mascota.enfermedad}}</span></p>
-                <p class="card-text">Estado: <span>{{mascota.estado}}</span></p>
-                <!--<p class="card-text">Tratamientos:<span>{{mascota.tratamientos}}</span></p> --> 
-            
-
-                <!-- Aquí agregamos los detalles del propietario -->
+            <div class="card-body">
+                <div class="details">
+                    <h5 class="card-title">{{mascota.nombre}}</h5>
+                    <p class="card-text">ID: <span>{{mascota.id}}</span></p>
+                    <p class="card-text">Raza: <span>{{mascota.raza}}</span></p>
+                    <p class="card-text">Edad: <span>{{mascota.edad}}</span></p>
+                    <p class="card-text">Peso: <span>{{mascota.peso | number:'1.1-2'}}</span> kg</p>
+                    <p class="card-text">Enfermedad: <span>{{mascota.enfermedad}}</span></p>
+                    <p class="card-text">Estado: <span>{{mascota.estado}}</span></p>
+                    <p class="card-text">Tratamientos:</p>
+                    <ul>
+                        <li *ngFor="let tratamiento of mascota.tratramientos">
+                            {{ tratamiento.medicamento }} ({{ tratamiento.fecha }}) 
+                        </li>
+                    </ul>
+                </div>
+                <div class="image-container">
+                    <img [src]="mascota.fotoUrl" alt="Foto de Mascota" class="card-img-top">
+                </div>
             </div>
-            <div class="image-container">
-                <img [src]="mascota.fotoUrl" alt="Foto de Mascota" class="card-img-top">
-            </div>
-        </div>
         </ng-container>
         <a href="javascript:window.history.back();" class="btn-testimonios">Volver</a>
     </div>
