@@ -1,10 +1,5 @@
-<!-- Barra decorativa superior -->
 <img src="assets/images/General/barrasola.png" alt="Barra Decorativa" class="barra-decorativa" />
-<!-- Footer decorativo -->
 <img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />
-
-<!-- Barra lateral de navegación -->
-<!-- Barra lateral de navegación -->
 <div class="sidebar close">
     <div class="logo">
         <img src="assets/images/doggin logos/DOGIN VARIACIONES DE COLOR-11.png" alt="Logo Dogin" class="logo-img" />
@@ -35,14 +30,14 @@
         </li>
 
         <li>
-            <a href="/tratamiento/add">
+            <a href="/tratamiento">
                 <i class="fa-solid fa-suitcase-medical"></i>
                 <span class="tooltip">Asignar Tratamiento</span> <!-- Tooltip agregado -->
             </a>
         </li>
 
         <li>
-            <a href="/historial/ver">
+            <a href="#">
                 <i class="fas fa-bookmark"></i>
                 <span class="tooltip">Ver Historial</span> <!-- Tooltip agregado -->
             </a>
@@ -70,28 +65,44 @@
 
         </li>
     </ul>
+
 </div>
-
-
-<!-- Sección principal de contenido -->
 <div class="home-section">
 
+    <img src="assets/images/General/modificarIcono.png" alt="icono" class="iconoModificar" />
 
-
-    <!-- Ícono decorativo -->
-    <img src="assets/images/General/Icono casita.png" alt="icono" class="iconoModificar" />
-    <div id="inicio">
-        <h1>BIENVENIDO <br />A NUESTRO EQUIPO</h1>
-        <p class="descripcion">
-            ¡Bienvenido al equipo de Dogin! Nos enorgullece contar contigo <br> para seguir brindando el mejor cuidado a nuestras queridas mascotas.
-            <br>En Dogin, trabajamos juntos con un equipo de veterinarios <br>  comprometidos y apasionados por la salud animal. ¡Gracias por ser parte de Dogin!
-        </p>
-    </div>
-
-    <!-- Encabezado del panel -->
     <header id="header">
-        <h1 class="form-title">PANEL VETERINARIO</h1>
-        <img src="assets/images/General/principal.png" alt="icono" class="Veteyperro" />
+        <h1 class="form-title">VER HISTORIAL</h1>
     </header>
 
-</div>
+    <section class="table__body">
+        <table id="mascotasTa   ble">
+            <thead>
+                <tr>
+                    <th> ID</th>
+                    <th> Nombre</th>
+                    <th> Raza</th>
+                    <th> Edad</th>
+                    <th> Enfermerdad</th>
+                    <th>Tratamiento</th>
+                    <th> Foto</th>
+                    <th> Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mascota of mascotaList">
+                    <td>{{mascota.id}}</td>
+                    <td>{{mascota.nombre}}</td>
+                    <td>{{mascota.raza}}</td>
+                    <td>{{mascota.edad}}</td>
+                    <td>{{mascota.enfermedad}}</td>
+                    <td></td>
+                    <td><img src="{{mascota.fotoUrl}}" alt="Imagen de la mascota" width="100" height="100"></td>
+                    <td>{{mascota.estado}}</td>
+            
+
+                </tr>
+            </tbody>
+        </table>
+    </section>
+

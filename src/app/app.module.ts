@@ -28,6 +28,7 @@ import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterin
 import { VeterinarioListComponent } from './veterinario/veterinario-list/veterinario-list.component';
 import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component';
 import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
+import { HistorialComponent } from './historial/historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/a
     VeterinarioFormComponent,
     VeterinarioListComponent,
     VeterinarioDetailComponent,
-    AsignarTratamientoComponent,  ],
+    AsignarTratamientoComponent,
+    HistorialComponent,
+      ],
   imports: [
     NgChartsModule,
     BrowserModule,
