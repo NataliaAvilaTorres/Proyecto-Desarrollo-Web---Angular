@@ -32,7 +32,7 @@ export class TratamientoService {
   addTratamiento(tratamiento: Tratamiento): Observable<Tratamiento> {
     console.log('Creando tratamiento:', tratamiento); // Log del payload
 
-    return this.http.post<Tratamiento>(`${this.apiUrl}/`, tratamiento);
+    return this.http.post<Tratamiento>(`${this.apiUrl}`, tratamiento);
   }
 
 
