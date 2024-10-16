@@ -48,7 +48,7 @@ main.table {
     border-radius: 0.6rem;
     overflow: auto;
     overflow: overlay;
-    margin-top: 135px;
+    margin-top: 210px;
 }
 
 .table__body::-webkit-scrollbar {

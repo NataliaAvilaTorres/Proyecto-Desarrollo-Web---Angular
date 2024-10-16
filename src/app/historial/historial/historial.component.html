@@ -22,6 +22,7 @@
             </a>
         </li>
 
+
         <li>
             <a href="/propietarioForm/add">
                 <i class="fa-solid fa-user-plus"></i>
@@ -37,7 +38,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/historial/ver">
                 <i class="fas fa-bookmark"></i>
                 <span class="tooltip">Ver Historial</span> <!-- Tooltip agregado -->
             </a>
@@ -74,6 +75,15 @@
     <header id="header">
         <h1 class="form-title">VER HISTORIAL</h1>
     </header>
+
+    <section class="buscar">
+        <div class="buscador-container">
+            <h1>BUSCADOR</h1>
+            <div class="buscador-input">
+                <input type="text" id="searchInput" placeholder="Buscar mascota..." (keyup)="buscarMascotas($event)" />
+            </div>
+        </div>
+    </section>
 
     <section class="table__body">
         <table id="mascotasTa   ble">

@@ -41,4 +41,22 @@ export class HistorialComponent implements OnInit{
     );
   }
 
+
+  buscarMascotas(event: any) {
+    const searchTerm = event.target.value.toLowerCase().trim();
+
+    if (searchTerm === '') {
+      this.mascotaList = [...this.originalMascotaList];
+    } else {
+      this.mascotaList = this.originalMascotaList.filter(mascota =>
+        Object.values(mascota).some((val: any) =>
+          val && val.toString().toLowerCase().includes(searchTerm)
+        )
+      );
+    }
+  }
+
+
+
+
 }
