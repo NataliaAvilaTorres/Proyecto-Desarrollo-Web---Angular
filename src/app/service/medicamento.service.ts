@@ -39,8 +39,6 @@ export class MedicamentoService {
         httpOptions
       );
     }
-
-
   
     // Agregar una nuevo medicamento
     addMedicamento(medicamento: Medicamento): Observable<Medicamento> {

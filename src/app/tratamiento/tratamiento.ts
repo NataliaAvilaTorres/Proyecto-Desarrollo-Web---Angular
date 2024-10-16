@@ -4,8 +4,8 @@ import { Medicamento } from "./medicamento";
 
 export interface Tratamiento {
     id: number;
-    fecha: Date;
-    mascota: Mascota;
-    veterinario: Veterinario;
-    medicamento: Medicamento;
+    fecha?: Date;
+    mascota?: Mascota | null;  // Hacer que sea opcional
+    veterinario?: Veterinario | null;  // Opcional y null
+    medicamento?: Medicamento | null;  // Opcional y null
 }

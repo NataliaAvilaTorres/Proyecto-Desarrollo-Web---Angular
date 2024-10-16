@@ -41,7 +41,7 @@ export class LoginPageComponent {
         if (veterinario) {
         // Guardar el correo en el localStorage
         localStorage.setItem('currentUserEmail', this.correo);
-        localStorage.setItem('currentVeterinario', JSON.stringify(veterinario)); // Guardar el veterinario completo
+        localStorage.setItem('currentVeterinarioId', veterinario.id.toString()); // Guardar el ID del veterinario
           this.router.navigate(['/veterinarioPanel']);
         } else {
           alert('Credenciales inválidas para veterinario');
