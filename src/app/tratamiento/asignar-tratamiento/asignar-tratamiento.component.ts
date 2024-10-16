@@ -40,11 +40,11 @@ export class AsignarTratamientoComponent implements OnInit {
     this.loadMascotas(); // Llamar al método que carga las mascotas
     this.loadMedicamentos(); // Cargar los medicamentos
   }
-
   loadMascotas(): void {
     this.mascotaService.findAll().subscribe(
       (data: Mascota[]) => {
-        this.mascotas = data; // Asignar las mascotas obtenidas
+        // Filtrar las mascotas con estado "Activo"
+        this.mascotas = data.filter(mascota => mascota.estado === 'Activo');
       },
       (error) => {
         console.error('Error fetching mascotas:', error);

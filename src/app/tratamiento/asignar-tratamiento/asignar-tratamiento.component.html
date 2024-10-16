@@ -86,7 +86,7 @@
         <select id="mascota" [(ngModel)]="tratamiento.mascota" name="mascota" required>
           <option [ngValue]="null" disabled selected>Seleccione una mascota</option>
           <option *ngFor="let mascota of mascotas" [ngValue]="mascota">
-            {{ mascota.nombre }} (ID: {{ mascota.id }})
+            (ID: {{ mascota.id }}) - {{ mascota.nombre }}
           </option>
         </select>
       </div>
