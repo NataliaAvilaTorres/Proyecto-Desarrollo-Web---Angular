@@ -89,7 +89,7 @@ export class AsignarTratamientoComponent implements OnInit {
                       next: (response) => {
                         console.log('Tratamiento creado con éxito:', response);
                         alert('Tratamiento creado correctamente');
-                        this.router.navigate(['/adminPanel']);
+                        this.router.navigate(['/historial/ver']);
                       },
                       error: (error) => {
                         console.error('Error al crear tratamiento:', error);
