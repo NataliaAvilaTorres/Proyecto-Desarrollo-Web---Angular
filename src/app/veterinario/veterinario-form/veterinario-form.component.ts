@@ -16,7 +16,6 @@ export class VeterinarioFormComponent {
     nombre: '',
     cedula: '',
     especialidad: '',
-    numAtenciones: 0,
     correo: '',
     contrasena: '',
     estado: ''
