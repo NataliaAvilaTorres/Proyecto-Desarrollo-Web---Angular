@@ -203,3 +203,37 @@ h5.card-title {
 .nav-list li {
     position: relative; /* Necesario para que el tooltip se posicione correctamente */
 }
+
+.table-container {
+    margin-top: 40px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #365486;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+}

@@ -18,11 +18,13 @@ export class AsignarTratamientoComponent implements OnInit {
 
   tratamiento: Tratamiento = {
     id: 0,
-    fecha: new Date(), // Inicialmente null hasta que se seleccione una fecha
-    mascota: null, // Un objeto vacío o la estructura inicial de la mascota
-    veterinario: null, // Un objeto vacío o la estructura inicial del veterinario
-    medicamento: null // Un objeto vacío o la estructura inicial del medicamento
+    fecha: new Date(),
+    mascota: null,
+    veterinario: null,
+    medicamento: null,
+    cantidad: 0  // Asegúrate de incluir la propiedad `cantidad`
   };
+  
 
   mascotas: Mascota[] = [];
   medicamentos: Medicamento[] = [];
@@ -72,15 +74,23 @@ export class AsignarTratamientoComponent implements OnInit {
           return;
         } else {
           // Restar las unidades suministradas
+          console.log('Unidades a suministrar:', this.unidadesSuministrar);
+          console.log('Unidades disponibles:', medicamentoSeleccionado.unidadesDisponibles);
+          console.log('Unidades vendidas:', medicamentoSeleccionado.unidadesVendidas);
           medicamentoSeleccionado.unidadesDisponibles -= this.unidadesSuministrar;
-  
+          medicamentoSeleccionado.unidadesVendidas += this.unidadesSuministrar;
+          // Asignar la cantidad de unidades suministradas al tratamiento
+          this.tratamiento.cantidad = this.unidadesSuministrar;  // Asignar correctamente la cantidad
+          console.log('Unidades disponibles:', medicamentoSeleccionado.unidadesDisponibles);
+          console.log('Unidades vendidas:', medicamentoSeleccionado.unidadesVendidas);
+          
           // Obtener el ID del veterinario del localStorage
           const veterinarioId = localStorage.getItem('currentVeterinarioId');
           if (veterinarioId) {
-            // Obtener el veterinario completo usando el ID
             this.veterinarioService.findVeterinarioById(+veterinarioId).subscribe({
               next: (veterinario) => {
-                this.tratamiento.veterinario = veterinario;  // Asignar el veterinario completo
+                this.tratamiento.veterinario = veterinario;
+  
                 // Actualizar el medicamento en la base de datos
                 this.medicamentoService.updateMedicamento(medicamentoSeleccionado).subscribe({
                   next: () => {
@@ -111,5 +121,6 @@ export class AsignarTratamientoComponent implements OnInit {
     } else {
       console.error('Todos los campos son requeridos');
     }
-  }  
+  }
+  
 }

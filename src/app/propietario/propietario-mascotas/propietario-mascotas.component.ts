@@ -22,7 +22,7 @@ export class PropietarioMascotasComponent implements OnInit {
         const propietario = propietarios.find(p => p.correo === userEmail);
         if (propietario) {
           this.propietarioNombre = propietario.nombre;
-          this.mascotas = propietario.mascotas;
+          this.mascotas = propietario.mascotas || [];
           this.filteredMascotas = [...this.mascotas];
         }
       }, error => console.error('Error fetching propietarios', error));

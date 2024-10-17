@@ -105,14 +105,16 @@ export class MascotaFormComponent implements OnInit {
     console.log('Selected propietario based on ID:', this.selectedPropietario);
 
     // Si no se encontró el propietario por ID, buscar en la lista de mascotas de cada propietario
-    if (!this.selectedPropietario) {
-      console.log('No propietario found by ID, searching through each propietario\'s mascotas...');
-      this.selectedPropietario = this.propietarioList.find(propietario =>
-        propietario.mascotas.some(m => m.id === this.mascota.id)
-      ) || null;
+  if (!this.selectedPropietario) {
+    console.log('No propietario found by ID, searching through each propietario\'s mascotas...');
+    
+    this.selectedPropietario = this.propietarioList.find(propietario =>
+      propietario.mascotas?.some(m => m.id === this.mascota.id)  // Usar el encadenamiento opcional
+    ) || null;
 
-      console.log('Selected propietario after checking mascotas:', this.selectedPropietario);
-    }
+    console.log('Selected propietario after checking mascotas:', this.selectedPropietario);
+  }
+
 
     // Si no se encontró propietario y estamos editando, mostrar mensaje de error
     if (!this.selectedPropietario) {
@@ -154,10 +156,11 @@ export class MascotaFormComponent implements OnInit {
   // Seleccionar propietario
   selectPropietario(propietario: Propietario): void {
     this.selectedPropietario = propietario;
-    this.propietarioSearch = propietario.cedula; // Rellenar el campo de búsqueda con la cédula seleccionada
-    this.isDropdownVisible = false; // Ocultar la lista después de seleccionar
-    this.mascota.propietario = propietario; // Sincronizar propietario seleccionado con la mascota
+    this.propietarioSearch = propietario.cedula;
+    this.isDropdownVisible = false;
+    this.mascota.propietario = propietario; // Actualiza directamente el propietario de la mascota
   }
+  
 
   // Enviando formulario
   updateMascota(form: NgForm): void {

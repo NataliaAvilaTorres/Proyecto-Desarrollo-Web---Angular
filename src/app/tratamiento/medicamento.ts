@@ -3,8 +3,9 @@ import { Tratamiento } from "./tratamiento";
 export interface Medicamento {
     id: number;
     nombre: string;
-    precio: number;
+    precioCompra: number;  // Agregar
+    precioVenta: number;   // Agregar
     unidadesDisponibles: number;
     unidadesVendidas: number;
-    tratamientos: Tratamiento[];
+    tratamientos?: Tratamiento[];  // Opcional
 }

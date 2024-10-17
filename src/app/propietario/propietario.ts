@@ -7,5 +7,5 @@ export interface Propietario {
     correo: string;
     celular: string;
     contrasena: string;
-    mascotas: Mascota[];  // Agregamos la lista de mascotas
+    mascotas?: Mascota[];  // Agregamos la lista de mascotas
 }

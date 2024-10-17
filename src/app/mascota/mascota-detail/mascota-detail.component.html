@@ -11,20 +11,37 @@
                     <p class="card-text">Peso: <span>{{mascota.peso | number:'1.1-2'}}</span> kg</p>
                     <p class="card-text">Enfermedad: <span>{{mascota.enfermedad}}</span></p>
                     <p class="card-text">Estado: <span>{{mascota.estado}}</span></p>
-                    <p class="card-text">Tratamientos:</p>
-                    <ul>
-                        <li *ngFor="let tratamiento of mascota.tratramientos">
-                            {{ tratamiento.medicamento }} ({{ tratamiento.fecha }}) 
-                        </li>
-                    </ul>
                 </div>
                 <div class="image-container">
                     <img [src]="mascota.fotoUrl" alt="Foto de Mascota" class="card-img-top">
                 </div>
             </div>
         </ng-container>
-        <a href="javascript:window.history.back();" class="btn-testimonios">Volver</a>
     </div>
+
+    <!-- Tabla de Tratamientos -->
+    <div *ngIf="mascota && mascota.tratamientos && mascota.tratamientos.length > 0" class="table-container">
+        <h3 class="servicios">Historial de Tratamientos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Medicamento</th>
+                    <th>Fecha</th>
+                    <th>Veterinario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tratamiento of mascota.tratamientos">
+                    <td>{{ tratamiento.medicamento?.nombre }}</td>
+                    <td>{{ tratamiento.fecha | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ tratamiento.veterinario?.nombre }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+    <a href="javascript:window.history.back();" class="btn-testimonios">Volver</a>
 </div>
 
 <img src="assets/images/General/footer.png" alt="Footer Decorativo" class="footer-decorativa" />

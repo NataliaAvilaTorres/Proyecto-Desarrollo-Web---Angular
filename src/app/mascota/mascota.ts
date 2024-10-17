@@ -11,5 +11,5 @@ export interface Mascota {
     fotoUrl: string;
     estado: string;
     propietario?: Propietario;
-    tratramientos?: Tratamiento[];
+    tratamientos?: Tratamiento[];  // Corregido: "tratamientos" en lugar de "tratramientos"
 }

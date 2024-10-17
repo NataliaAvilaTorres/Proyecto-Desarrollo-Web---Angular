@@ -28,8 +28,9 @@ export class LoginPageComponent {
       this.propietarioService.findAll().subscribe(propietarios => {
         const propietario = propietarios.find(p => p.correo === this.correo && p.contrasena === this.contrasena);
         if (propietario) {
-          // Guardar el correo en el localStorage
+          // Guardar el correo y el rol en el localStorage
           localStorage.setItem('currentUserEmail', this.correo);
+          localStorage.setItem('userRole', 'DUENO'); // Guardar el rol
           this.router.navigate(['/propietarioPanel']);
         } else {
           alert('Credenciales inválidas para dueño de mascota');
@@ -39,9 +40,10 @@ export class LoginPageComponent {
       this.veterinarioService.findAll().subscribe(veterinarios => {
         const veterinario = veterinarios.find(v => v.correo === this.correo && v.contrasena === this.contrasena);
         if (veterinario) {
-        // Guardar el correo en el localStorage
-        localStorage.setItem('currentUserEmail', this.correo);
-        localStorage.setItem('currentVeterinarioId', veterinario.id.toString()); // Guardar el ID del veterinario
+          // Guardar el correo y el rol en el localStorage
+          localStorage.setItem('currentUserEmail', this.correo);
+          localStorage.setItem('userRole', 'VETERINARIO'); // Guardar el rol
+          localStorage.setItem('currentVeterinarioId', veterinario.id.toString()); // Guardar el ID del veterinario
           this.router.navigate(['/veterinarioPanel']);
         } else {
           alert('Credenciales inválidas para veterinario');
@@ -51,13 +53,17 @@ export class LoginPageComponent {
       this.administradorService.findAll().subscribe(administradores => {
         const administrador = administradores.find(v => v.correo === this.correo && v.contrasena === this.contrasena);
         if (administrador) {
+          // Guardar el correo y el rol en el localStorage
+          localStorage.setItem('currentUserEmail', this.correo);
+          localStorage.setItem('userRole', 'ADMIN'); // Guardar el rol
           this.router.navigate(['/adminPanel']);
         } else {
           alert('Credenciales inválidas para administrador');
         }
       });
-    }else {
+    } else {
       alert('Por favor, seleccione un rol');
     }
   }
+  
 }
