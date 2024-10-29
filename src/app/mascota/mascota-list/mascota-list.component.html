@@ -121,7 +121,7 @@
 
                         <!--BOTONES DE ACCIONES-->
                         <td>
-                            <button class="btn-detalles" (click) = "mostrarMascota(mascota)">Ver Detalles</button>
+                            <button [id]="'btn-detalles-' + mascota.id" class="btn-detalles" (click)="mostrarMascota(mascota)">Ver Detalles</button>
                             <button class="btn-editar" (click) = "editarMascota(mascota)">Editar</button>
                             <button class="btn-eliminar" (click) = "eliminarMascota(mascota)">Eliminar</button>
                         </td>

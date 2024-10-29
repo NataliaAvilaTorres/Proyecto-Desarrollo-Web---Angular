@@ -85,7 +85,7 @@
         <label for="mascota">Seleccione una mascota</label>
         <select id="mascota" [(ngModel)]="tratamiento.mascota" name="mascota" required>
           <option [ngValue]="null" disabled selected>Seleccione una mascota</option>
-          <option *ngFor="let mascota of mascotas" [ngValue]="mascota">
+          <option id="mascota" *ngFor="let mascota of mascotas" [ngValue]="mascota">
             (ID: {{ mascota.id }}) - {{ mascota.nombre }}
           </option>
         </select>
