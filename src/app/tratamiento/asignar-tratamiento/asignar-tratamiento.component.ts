@@ -83,6 +83,10 @@ export class AsignarTratamientoComponent implements OnInit {
           this.tratamiento.cantidad = this.unidadesSuministrar;  // Asignar correctamente la cantidad
           console.log('Unidades disponibles:', medicamentoSeleccionado.unidadesDisponibles);
           console.log('Unidades vendidas:', medicamentoSeleccionado.unidadesVendidas);
+          // Ajuste de fecha: suma un día
+          const adjustedDate = new Date(this.tratamiento.fecha);
+          adjustedDate.setDate(adjustedDate.getDate() + 1);
+          this.tratamiento.fecha = adjustedDate;
           
           // Obtener el ID del veterinario del localStorage
           const veterinarioId = localStorage.getItem('currentVeterinarioId');
