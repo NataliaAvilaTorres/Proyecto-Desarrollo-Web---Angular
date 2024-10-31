@@ -79,7 +79,7 @@
         <div class="kpi-card">
           <div class="kpi-header">
             <h3>Total de Tratamientos</h3>
-            <p class="kpi-number">{{ kpis.totalTratamientos }}</p>
+            <p id ="totalTratamientos" class="kpi-number">{{ kpis.totalTratamientos }}</p>
           </div>
           <p class="meta-info">Meta: 100 tratamientos</p>
           <div class="progress-container">
@@ -147,9 +147,6 @@
             </span>
             </p>
         </div>
-  
-  
-  
 
         <!-- KPI 2: Mascotas Activas vs Totales (Pie Chart) -->
         <div class="kpi-card">
@@ -165,28 +162,17 @@
           <p class="meta-info">Total de Mascotas: {{ kpis.totalMascotas }}</p>
         </div>
 
-
-
-
         <!-- KPI 4: Ventas y Ganancias -->
         <div class="kpi-card ventas-ganancias-card">
           <div class="ventas-info">
             <h3>Ventas Totales</h3>
-            <p class="ventas-valor">${{ formatNumber(kpis.ventasTotales) }}</p>
+            <p id = "ventas-valor"class="ventas-valor">${{ formatNumber(kpis.ventasTotales) }}</p>
           </div>
           <div class="ganancias-info">
             <h3>Ganancias Totales</h3>
             <p class="ganancias-valor">${{ formatNumber(kpis.gananciasTotales) }}</p>
           </div>
         </div>
-
-
-
-        
     </div>
 </div>
-
-
-
-
 </div>

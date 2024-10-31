@@ -40,4 +40,5 @@ export class AdministradorService {
     getDashboardKPIs(): Observable<any> {
       return this.http.get<any>(`${this.apiUrl}/dashboard`);
     }
+    
 }
