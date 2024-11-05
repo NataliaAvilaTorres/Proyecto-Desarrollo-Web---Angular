@@ -18,10 +18,30 @@ import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/vet
 import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
 import { HistorialComponent } from './historial/historial/historial.component';
 
+import { RoleGuard } from './guards/role.guard';
+
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent}, //http://localhost:4200/login
-  {path: 'veterinarioPanel', component: VeterinarioPanelComponent}, //http://localhost:4200/veterinarioPanel
-  {path: 'propietarioPanel', component: PropietarioPanelComponent}, //http://localhost:4200/propietarioPanel
+  //{path: 'veterinarioPanel', component: VeterinarioPanelComponent}, //http://localhost:4200/veterinarioPanel
+  //{path: 'propietarioPanel', component: PropietarioPanelComponent}, //http://localhost:4200/propietarioPanel
+  {
+    path: 'adminPanel',
+    component: AdministradorPanelComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['ROLE_ADMIN'] } // Protegemos esta ruta para el rol admin
+  },
+  {
+    path: 'veterinarioPanel',
+    component: VeterinarioPanelComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['ROLE_VETERINARIO'] } // Protegemos esta ruta para el rol veterinario
+  },
+  {
+    path: 'propietarioPanel',
+    component: PropietarioPanelComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['ROLE_PROPETARIO'] } // Protegemos esta ruta para el rol propietario
+  },
   {path: 'propietarios', component: PropietarioListComponent}, //http://localhost:4200/propietarios
   {path: 'propietarioForm/add', component: PropietarioFormComponent}, //http://localhost:4200/propietarioForm/add
   {path: 'propietario/detail/:id', component: PropietarioDetailsComponent}, //http://localhost:4200/propietario/detail/1
@@ -31,7 +51,7 @@ const routes: Routes = [
   {path: 'mascota/detail/:id', component: MascotaDetailComponent}, //http://localhost:4200/mascota/detail/1
   {path: 'mascotaForm/update/:id', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/update/1
   {path: 'mascotaForm/add', component: MascotaFormComponent}, //http://localhost:4200/mascotaForm/add
-  {path: 'adminPanel', component: AdministradorPanelComponent}, //http://localhost:4200/adminPanel
+  //{path: 'adminPanel', component: AdministradorPanelComponent}, //http://localhost:4200/adminPanel
   { path: 'admin', component: AdminMascotaFormComponent, 
     children: [
       { path: 'mascotaForm/add', component: MascotaFormComponent } // http://localhost:4200/admin/mascotaForm/add
@@ -48,6 +68,8 @@ const routes: Routes = [
   {path: 'veterinario/detail/:id', component: VeterinarioDetailComponent}, //http://localhost:4200/veterinario/detail/1
   {path: 'tratamiento/add', component: AsignarTratamientoComponent}, //http://localhost:4200/tratamiento/add
   {path: 'historial/ver', component: HistorialComponent},//
+  { path: '', redirectTo: '/', pathMatch: 'full' }, // Redirección por defecto a home
+  { path: '**', redirectTo: '/' } // Redirección para rutas no encontradas a home
 ];
 
 @NgModule({
