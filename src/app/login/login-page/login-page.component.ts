@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
+import { AdministradorService } from 'src/app/service/administrador.service';
+import { PropietarioService } from 'src/app/service/propietario.service';
+import { VeterinarioService } from 'src/app/service/veterinario.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,31 +17,53 @@ export class LoginPageComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService
-  ) {}
+    private propietarioService: PropietarioService,
+    private veterinarioService: VeterinarioService,
+    private administradorService: AdministradorService
+  ) { }
 
-  // Función para iniciar sesión
+  // Función para iniciar sesión ayuda a guardar el correo y contraseña en el localStorage
   onSubmit() {
-    if (!this.role) {
+    if (this.role === 'dueno') {
+      this.propietarioService.findAll().subscribe(propietarios => {
+        const propietario = propietarios.find(p => p.correo === this.correo && p.contrasena === this.contrasena);
+        if (propietario) {
+          // Guardar el correo y el rol en el localStorage
+          localStorage.setItem('currentUserEmail', this.correo);
+          localStorage.setItem('userRole', 'DUENO'); // Guardar el rol
+          this.router.navigate(['/propietarioPanel']);
+        } else {
+          alert('Credenciales inválidas para dueño de mascota');
+        }
+      });
+    } else if (this.role === 'veterinario') {
+      this.veterinarioService.findAll().subscribe(veterinarios => {
+        const veterinario = veterinarios.find(v => v.correo === this.correo && v.contrasena === this.contrasena);
+        if (veterinario) {
+          // Guardar el correo y el rol en el localStorage
+          localStorage.setItem('currentUserEmail', this.correo);
+          localStorage.setItem('userRole', 'VETERINARIO'); // Guardar el rol
+          localStorage.setItem('currentVeterinarioId', veterinario.id.toString()); // Guardar el ID del veterinario
+          this.router.navigate(['/veterinarioPanel']);
+        } else {
+          alert('Credenciales inválidas para veterinario');
+        }
+      });
+    } else if (this.role === 'admin') {
+      this.administradorService.findAll().subscribe(administradores => {
+        const administrador = administradores.find(v => v.correo === this.correo && v.contrasena === this.contrasena);
+        if (administrador) {
+          // Guardar el correo y el rol en el localStorage
+          localStorage.setItem('currentUserEmail', this.correo);
+          localStorage.setItem('userRole', 'ADMIN'); // Guardar el rol
+          this.router.navigate(['/adminPanel']);
+        } else {
+          alert('Credenciales inválidas para administrador');
+        }
+      });
+    } else {
       alert('Por favor, seleccione un rol');
-      return;
     }
-
-    // Enviar credenciales al AuthService
-    const credentials = {
-      correo: this.correo,
-      contrasena: this.contrasena,
-      role: this.role  // role ahora está en el formato correcto, como "ROLE_ADMIN", "ROLE_VETERINARIO" o "ROLE_PROPETARIO"
-    };
-
-    this.authService.login(credentials).subscribe(
-      () => {
-        // La redirección se maneja en el AuthService según el rol
-      },
-      error => {
-        console.error('Error de autenticación', error);
-        alert('Credenciales inválidas');
-      }
-    );
   }
+  
 }

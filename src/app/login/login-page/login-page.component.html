@@ -7,19 +7,9 @@
         <h2>Iniciar Sesión</h2>
         <form (ngSubmit)="onSubmit()">
             <div class="role-selection">
-                <!-- Cambia los valores de los roles para que coincidan con los roles del backend -->
-                <label>
-                    <input type="radio" name="role" [(ngModel)]="role" id="role-veterinario" value="ROLE_VETERINARIO" required> 
-                    Veterinario
-                </label><br />
-                <label>
-                    <input type="radio" name="role" [(ngModel)]="role" id="role-dueno" value="ROLE_PROPETARIO" required> 
-                    Dueño de Mascota
-                </label><br />
-                <label>
-                    <input type="radio" name="role" [(ngModel)]="role" id="role-admin" value="ROLE_ADMIN" required> 
-                    Administrador
-                </label>
+                <label><input type="radio" name="role" [(ngModel)]="role" id="role-veterinario" value="veterinario" required> Veterinario</label><br />
+                <label><input type="radio" name="role" [(ngModel)]="role" id="role-dueno" value="dueno" required> Dueño de Mascota</label><br />
+                <label><input type="radio" name="role" [(ngModel)]="role" id="role-admin" value="admin" required> Administrador</label>
             </div>
 
             <div class="input-group">
@@ -32,6 +22,7 @@
             </div>
 
             <button type="submit" id="login-btn" class="login-btn">Iniciar Sesión</button>
+
         </form>
         <div class="links">
             <a href="#">¿Olvidaste tu contraseña?</a>
